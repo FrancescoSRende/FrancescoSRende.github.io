@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Howdy</title>
+	<script>
+		
+		function countToTwenty() {
+			var count = 0;
+			while (count < 20) {
+				count++;
+				document.getElementById("theCount").innerHTML += count + "<br>";
+			}
+		}
+
+		function countToTen() {
+			var count = 0;
+			while (count < 10) {
+				count++;
+				document.getElementById("theCount").innerHTML += count + "<br>";
+			}
+		}
+
+		function countToFive() {
+			var count = 0;
+			while (count < 5) {
+				count++;
+				document.getElementById("theCount").innerHTML += count + "<br>";
+			}
+		}
+
+		function print_f() {
+				document.getElementById("theCount").innerHTML += "f" + "<br>";
+		}
+
+	</script>
+</head>
+
+<body onload="print_f();">
+	<h1>Counting to 10</h1>
+	<p id="theCount"></p>
+</body>
+
+<button id="bigButton" onmouseover="countToTwenty();"></button>
+
+<button id="bigButton" onkeydown="countToTen();"></button>
+
+<button id="bigButton" onclick="countToFive();"></button>
+
+</html>
