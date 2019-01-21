@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Class Versus ID</title>
+
+	<style>
+
+		div {
+			height: 100px;
+			width: 100px;
+			background-color: yellow;
+		}
+
+		#div1 {
+			background-color: green;
+		}
+
+		#div1:hover {
+			background-color: blue;
+		}
+
+		.div2 {
+			width: 150px;
+		}
+
+		.div2:hover {
+			background-color: purple;
+		}
+
+		.div3 {
+			background-color: blue;
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<div style = "background-color: red">
+	</div>
+	<div class = "div2 div3">
+	</div>
+	<div id = "div1">
+	</div>
+	<div class = "div2">
+	</div>
+
+</body>
+</html>
