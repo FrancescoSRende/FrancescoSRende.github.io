@@ -2,7 +2,7 @@
 <html>
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<title>Stage 2 JSON Activity</title>
+	<title>Stage 3 JSON Activity</title>
 </head>
 <body>
 
@@ -12,6 +12,9 @@
 
 	$.getJSON(staticUrl, function(data) {
         console.log(data)
+        console.log(data.fact[1].dims.COUNTRY)
+        console.log(data.fact[1].dims.GHO)
+        console.log(data.fact[1].dims.YEAR)
     });
 </script>
 
