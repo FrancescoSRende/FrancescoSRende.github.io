@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<title>Stage 4 JSON Activity</title>
+</head>
+
+<style>
+
+.div {
+	height: 50px;
+    width: 0px;
+    border-radius: 10px;
+}
+#div1 {
+    background: blue;
+}
+#div2 {
+    background: red;
+}
+#div3 {
+    background: green;
+}
+p {
+    font-size: 20px;
+    line-height: 50px;
+    margin-left: 30px;
+}
+
+</style>
+
+<body>
+
+<script>
+	var myData = "data/data.json";
+	var staticUrl = 'https://raw.githubusercontent.com/FrancescoSRende/FrancescoSRende.github.io/master/Activity%202/data/data.json'; 
+	console.log("HI");
+	$.getJSON(staticUrl, function(data) {
+
+		iw = window.innerWidth - 100; //access the width of the inner window
+
+		console.log(data);
+
+        country1Data = data.fact[1].Value; //Get value from JSON
+		loc1 = country1Data.indexOf("["); //Locate the [ bracket
+		val1 = country1Data.substring(0,loc1); // All values have [
+		val1 = val1.replace(/ /g,""); //replace all " " with ""
+		val1 = parseInt(val1); //convert val1 to into int
+		console.log(val1);
+
+		country2Data = data.fact[2].Value;
+		loc2 = country2Data.indexOf("[");
+		val2 = country2Data.substring(0,loc2);
+		val2 = val2.replace(/ /g,"");
+		val2 = parseInt(val2);
+		console.log(val2);
+
+		country4Data = data.fact[4].Value;
+		loc4 = country4Data.indexOf("[");
+		val4 = country4Data.substring(0,loc4);
+		val4 = val4.replace(/ /g,"");
+		val4 = parseInt(val4);
+		console.log(val4);
+
+		largest = Math.max(val1,val2,val4);
+		val1s = (val1/largest)*iw;
+		val2s = (val2/largest)*iw;
+		val4s = (val4/largest)*iw;
+
+		document.getElementById("div2").style.width = val1s+"px";
+		document.getElementById("p2").innerHTML = "<pre>"+data.fact[2].dims.COUNTRY + " : "+val2+"</pre>"
+
+		document.getElementById("div1").style.width = val2s+"px";
+		document.getElementById("p1").innerHTML = "<pre>"+data.fact[1].dims.COUNTRY + " : "+val1+"</pre>"
+
+		document.getElementById("div3").style.width = val4s+"px";
+		document.getElementById("p3").innerHTML = "<pre>"+data.fact[4].dims.COUNTRY + " : "+val4+"</pre>"
+
+    });
+</script>
+
+<h1>HIV Infection Rates Compared Proportionally By Country<h1>
+<div class = "div" id = "div1"><p id = "p1"></p>
+</div>
+<div class = "div" id = "div2"><p id = "p2"></p>
+</div>
+<div class = "div" id = "div3"><p id = "p3"></p>
+</div>
+
+</body>
+</html>
