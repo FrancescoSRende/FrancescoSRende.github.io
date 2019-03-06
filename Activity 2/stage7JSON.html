@@ -41,9 +41,9 @@
            
         }
         #content {
-            
             margin-top:200px;
         }    
+
     </style>
 </head>
 <body>
@@ -68,14 +68,14 @@
     var entry = document.getElementById("maxdisplay");
     var displayContent = document.getElementById("content");
     console.log(entry);
+
     function generateDisplay() {
         //Clear content div
         while (displayContent.getElementsByTagName("div").length > 0) {
         
-            displayContent.removeChild(displayContent.childNodes[0])
-        
+           displayContent.removeChild(displayContent.childNodes[0])
         }
-        
+       
         $.getJSON(staticUrl, function(data) {
             iw = window.innerWidth - 100;
             //console.log(iw);
@@ -86,7 +86,7 @@
             val = countryData.substring(0,loc);
             val = val.replace(/ /g,"");
             val = parseInt(val);
-            largest = val;
+            largest = val; 
             console.log(largest)
             len = data.fact.length;
             for (i = 0; i < len; i = i + 1) {
