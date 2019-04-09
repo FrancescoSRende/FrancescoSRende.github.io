@@ -1,3 +1,6 @@
+document.getElementById("defaultOpen").click();
+window.onscroll = function() {scrollFunction()};
+
 function openCity(evt, cityName) {
 	var i, tabcontent, tablinks;
 	tabcontent = document.getElementsByClassName("tabcontent");
@@ -12,4 +15,11 @@ function openCity(evt, cityName) {
 	evt.currentTarget.className += " active";
 }
 
-document.getElementById("defaultOpen").click();
+function scrollFunction() {
+	if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+		document.getElementsByClassName("sidenav")[0].style.fontSize = "30px";
+	}
+	else {
+		document.getElementsByClassName("sidenav")[0].style.fontSize = "90px";
+	}
+}
