@@ -17,9 +17,9 @@ function openCity(evt, cityName) {
 
 function scrollFunction() {
 	if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-		document.getElementsByClassName("sidenav")[0].style.fontSize = "30px";
+		document.getElementsByClassName("sidenav")[0].style.top = "0px";
 	}
 	else {
-		document.getElementsByClassName("sidenav")[0].style.fontSize = "90px";
+		document.getElementsByClassName("sidenav")[0].style.top = "55px";
 	}
 }
