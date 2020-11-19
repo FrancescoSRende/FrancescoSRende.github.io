@@ -45,7 +45,18 @@ var homePage = document.getElementById("home");
 
 var landingPage = document.getElementById("landing");
 
+var prisonPage = document.getElementById("prison");
+var lockedPage = document.getElementById("locked");
+
+var signUpPage = document.getElementById("landing2");
+var mSignUp = document.getElementById("modal-signup");
+var signUpForm = document.getElementById("signup-form");
+
 homePage.style.display = "none"
+prisonPage.style.display = "none"
+lockedPage.style.display = "none"
+
+var failedAttempts = 0
 
 //the first input tells the event listener what action to look for (here, submit means when the button is clicked)
 //the second input tells it what to do once the first inout happens
@@ -53,6 +64,7 @@ homePage.style.display = "none"
 //Step 2: bind an event listener
 //Notice: JQuery can also be used to do this, but it is placed in a different location
 loginForm.addEventListener("submit",function(e) {
+
 
     //since loginForm is calling the event listener, which is using the function which is being passed 'e',
     //e and loginForm are the same, therefore e.preventDefault(); stops the loginForm from closing/reloading the page
@@ -71,11 +83,50 @@ loginForm.addEventListener("submit",function(e) {
     if (result === true) {
         homePage.style.display = "block"
         landingPage.style.display = "none"
+        signUpPage.style.display = "none"
+        failedAttempts = 0
+    } else {
+        prisonPage.style.display = "block"
+        failedAttempts += 1
+    }
+
+    if (failedAttempts > 2) {
+        lockedPage.style.display = "block"
+        landingPage.style.display = "none"
+        homePage.style.display = "none"
+        prisonPage.style.display = "none"
+        mSignUp.style.display = "none"
     }
 
 });
 
 console.log(loginForm);
+
+
+
+
+
+
+signUpForm.addEventListener("submit",function(e) {
+
+
+    e.preventDefault(); //stops the form from reloading the pages
+    email = document.getElementById("signup-email").value;
+    password = document.getElementById("signup-password").value;
+
+    // uNames.push(email)
+    // pWords.push(password)
+
+    console.log(uNames)
+
+    //this closes the login form
+    //you can put JQuery code in a JS file
+    $(mSignUp).modal("close");
+
+
+});
+
+
 
 
 
