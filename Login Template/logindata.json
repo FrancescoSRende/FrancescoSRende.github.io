@@ -1,14 +1,14 @@
 [
     {
-        "id" : "user1@test.com",
+        "id" : "test1@gmail.com",
         "password" : "pword1"
     },
     {
-        "id": "user2@test.com",
+        "id": "test2@gmail.com",
         "password": "pword2"
     },
     {
-        "id": "user3@test.com",
+        "id": "test3@gmail.com",
         "password": "pword3"
     }
 
