@@ -11,6 +11,35 @@
 </head>
 <body>
 
+
+
+	<nav class="nav-wraper indigo" id="navbarTop">
+        <div class="container">
+            <a href="#" class="brand-logo">Navbars</a>
+            <a href="#" class="sidenav-trigger" data-target="mobile-links">
+                <i class="material-icons">menu</i>
+            </a>
+            
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+				<li><a href="#">Login</a></li>
+				<li><a href="#" class = "btn orange modal-trigger" id="signOut">Sign out</a></li>
+            </ul>
+        </div>
+
+	</nav>
+
+
+    <ul class="sidenav" id="mobile-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+	</ul>
+	
+	
+
 	<div id = "landing" class = "container">
 		<h2>Login</h2>
 		<a href = "#modal-login" class = "btn orange modal-trigger">LOGIN</a>
@@ -71,21 +100,30 @@
 				<button class = "btn yellow darken-2 z-depth-0">Sign Up</button>
 			</form>
 		</div>
-    </div>
+	</div>
+
 
 
     
 </body>
 
-<script src="fake_login.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 <script>
     $(document).ready(function(){
+        $('.sidenav').sidenav();
         $('.modal').modal({
             dismissible: false,
         });
     });
 </script>
+
+<script src="fake_login.js"></script>
     
 </html>

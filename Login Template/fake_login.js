@@ -52,9 +52,16 @@ var signUpPage = document.getElementById("landing2");
 var mSignUp = document.getElementById("modal-signup");
 var signUpForm = document.getElementById("signup-form");
 
+var signOut = document.getElementById("signOut");
+
+
+var navbar = document.getElementById("navbarTop");
+
+
 homePage.style.display = "none"
 prisonPage.style.display = "none"
 lockedPage.style.display = "none"
+navbar.style.display = "none"
 
 var failedAttempts = 0
 
@@ -84,6 +91,7 @@ loginForm.addEventListener("submit",function(e) {
         homePage.style.display = "block"
         landingPage.style.display = "none"
         signUpPage.style.display = "none"
+        navbar.style.display = "block"
         failedAttempts = 0
     } else {
         prisonPage.style.display = "block"
@@ -101,6 +109,23 @@ loginForm.addEventListener("submit",function(e) {
 });
 
 console.log(loginForm);
+
+
+
+
+
+
+signOut.addEventListener("click",function(e) {
+
+    homePage.style.display = "none"
+    landingPage.style.display = "block"
+    signUpPage.style.display = "block"
+    navbar.style.display = "none"
+
+});
+
+
+
 
 
 
