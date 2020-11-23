@@ -38,12 +38,11 @@ fetch(url, {})
 //How do I check the login?
 //Step 1: Grab the form (the element which controls the inputs)
 
+var landingPage = document.getElementById("landing");
 var mlogin = document.getElementById("modal-login");
 var loginForm = document.getElementById("login-form");
 
 var homePage = document.getElementById("home");
-
-var landingPage = document.getElementById("landing");
 
 var prisonPage = document.getElementById("prison");
 var lockedPage = document.getElementById("locked");
@@ -54,14 +53,26 @@ var signUpForm = document.getElementById("signup-form");
 
 var signOut = document.getElementById("signOut");
 
-
 var navbar = document.getElementById("navbarTop");
+
+var landingPageAdmin = document.getElementById("landing-admin");
+var mLoginAdmin = document.getElementById("modal-login-admin");
+var loginFormAdmin = document.getElementById("login-form-admin");
+
+var loginChance = document.getElementById("login-chance");
+
+var prisonPageChance = document.getElementById("prison-chance");
+
+var adminPage = document.getElementById("admin-page");
 
 
 homePage.style.display = "none"
 prisonPage.style.display = "none"
 lockedPage.style.display = "none"
 navbar.style.display = "none"
+adminPage.style.display = "none"
+prisonPageChance.style.display = "none"
+
 
 var failedAttempts = 0
 
@@ -92,9 +103,12 @@ loginForm.addEventListener("submit",function(e) {
         landingPage.style.display = "none"
         signUpPage.style.display = "none"
         navbar.style.display = "block"
+        landingPageAdmin.style.display = "none"
+        prisonPageChance.style.display = "none"
         failedAttempts = 0
     } else {
         prisonPage.style.display = "block"
+        prisonPageChance.style.display = "none"
         failedAttempts += 1
     }
 
@@ -104,6 +118,8 @@ loginForm.addEventListener("submit",function(e) {
         homePage.style.display = "none"
         prisonPage.style.display = "none"
         mSignUp.style.display = "none"
+        landingPageAdmin.style.display = "none"
+        prisonPageChance.style.display = "none"
     }
 
 });
@@ -121,7 +137,50 @@ signOut.addEventListener("click",function(e) {
     landingPage.style.display = "block"
     signUpPage.style.display = "block"
     navbar.style.display = "none"
+    landingPageAdmin.style.display = "block"
+    adminPage.style.display = "none"
 
+});
+
+
+
+
+
+loginFormAdmin.addEventListener("submit",function(e) {
+
+
+
+    e.preventDefault(); //stops the form from reloading the pages
+    password = document.getElementById("login-password-admin").value;
+
+    //this closes the login form
+    //you can put JQuery code in a JS file
+    $(mLoginAdmin).modal("close");
+
+    if (password === "password") {
+        homePage.style.display = "block"
+        landingPage.style.display = "none"
+        signUpPage.style.display = "none"
+        navbar.style.display = "block"
+        landingPageAdmin.style.display = "none"
+        adminPage.style.display = "block"
+        prisonPageChance.style.display = "none"
+        failedAttempts = 0
+    } else {
+        prisonPage.style.display = "block"
+        prisonPageChance.style.display = "none"
+        failedAttempts += 1
+    }
+
+    if (failedAttempts > 2) {
+        lockedPage.style.display = "block"
+        landingPage.style.display = "none"
+        homePage.style.display = "none"
+        prisonPage.style.display = "none"
+        mSignUp.style.display = "none"
+        landingPageAdmin.style.display = "none"
+        prisonPageChance.style.display = "none"
+    }
 });
 
 
@@ -150,6 +209,46 @@ signUpForm.addEventListener("submit",function(e) {
 
 
 });
+
+
+
+
+
+loginChance.addEventListener("click",function(e) {
+
+    e.preventDefault(); //stops the form from reloading the pages
+    numberChance = Math.floor(Math.random() * 10)
+    console.log(numberChance)
+
+    //this closes the login form
+    //you can put JQuery code in a JS file
+    $(mLoginAdmin).modal("close");
+
+    if (numberChance > 8) {
+        homePage.style.display = "block"
+        landingPage.style.display = "none"
+        signUpPage.style.display = "none"
+        navbar.style.display = "block"
+        landingPageAdmin.style.display = "none"
+        adminPage.style.display = "block"
+        prisonPageChance.style.display = "none"
+        failedAttempts = 0
+    } else {
+        prisonPageChance.style.display = "block"
+        failedAttempts += 1
+    }
+    if (failedAttempts > 2) {
+        lockedPage.style.display = "block"
+        landingPage.style.display = "none"
+        homePage.style.display = "none"
+        prisonPage.style.display = "none"
+        mSignUp.style.display = "none"
+        prisonPageChance.style.display = "none"
+        landingPageAdmin.style.display = "none"
+    }
+
+});
+
 
 
 

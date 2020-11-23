@@ -37,19 +37,6 @@
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
 	</ul>
-	
-	
-
-	<div id = "landing" class = "container">
-		<h2>Login</h2>
-		<a href = "#modal-login" class = "btn orange modal-trigger">LOGIN</a>
-    </div>
-
-    <div id = "landing2" class = "container">
-        <h2>Sign Up</h2>
-        <p>(Currently non-operational)</p>
-		<a href = "#modal-signup" class = "btn orange modal-trigger">SIGN UP</a>
-    </div>
     
 
     <div id="home" class="container">
@@ -62,6 +49,26 @@
 
     <div id="locked" class="container">
         <h1>Too many failed attempts!</h1>
+    </div>
+
+
+    <div id="prison-chance" class="container">
+        <h1>That feeling of luck may have been misplaced.</h1>
+    </div>
+
+
+
+    <div id="admin-page" class="container">
+        <a href = "https://materializecss.com/getting-started.html">Link</a>
+    </div>
+
+
+
+
+
+    <div id = "landing" class = "container">
+		<h2>Login</h2>
+		<a href = "#modal-login" class = "btn orange modal-trigger">LOGIN</a>
     </div>
 
 	<div id = "modal-login" class = "modal">
@@ -84,6 +91,14 @@
 
 
 
+
+    <div id = "landing2" class = "container">
+        <h2>Sign Up</h2>
+        <p>(Currently non-operational)</p>
+		<a href = "#modal-signup" class = "btn orange modal-trigger">SIGN UP</a>
+    </div>
+
+
     <div id = "modal-signup" class = "modal">
 		<div class = "modal-content">
 			<h4>Sign Up</h4><br/>
@@ -100,7 +115,32 @@
 				<button class = "btn yellow darken-2 z-depth-0">Sign Up</button>
 			</form>
 		</div>
-	</div>
+    </div>
+
+
+
+
+
+    <div id = "landing-admin" class = "container">
+        <h2>Administrator Login</h2>
+		<a href = "#modal-login-admin" class = "btn orange modal-trigger">ADMIN LOGIN</a>
+    </div>
+    
+
+    <div id = "modal-login-admin" class = "modal">
+		<div class = "modal-content">
+			<h4>Administrator Login</h4><br/>
+			<form id = "login-form-admin">
+				<div class = "input-field">
+					<input type = "password" id="login-password-admin" autocomplete="" required/>
+					<label for = "login-password-admin">Administrator Password</label>
+                </div>
+
+                <button class = "btn red darken-2 z-depth-0">Administrator Login</button>
+                <button id="login-chance" class = "btn blue darken-2 z-depth-0">I'm feeling lucky</button>
+			</form>
+		</div>
+    </div>
 
 
 
