@@ -14,6 +14,7 @@ var pWords = []
 //a link to the JSON file
 var url = "https://raw.githubusercontent.com/FrancescoSRende/FrancescoSRende.github.io/master/Login%20Template/logindata.json";
 
+//initially an asynchronous process
 fetch(url, {})
     .then(response => response.json()) //arrow function
     //the first 'response' is the parameter of the function (ie. function(parameter))
@@ -76,16 +77,8 @@ prisonPageChance.style.display = "none"
 
 var failedAttempts = 0
 
-//the first input tells the event listener what action to look for (here, submit means when the button is clicked)
-//the second input tells it what to do once the first inout happens
+function loginFormFunction(e) {
 
-//Step 2: bind an event listener
-//Notice: JQuery can also be used to do this, but it is placed in a different location
-loginForm.addEventListener("submit",function(e) {
-
-
-    //since loginForm is calling the event listener, which is using the function which is being passed 'e',
-    //e and loginForm are the same, therefore e.preventDefault(); stops the loginForm from closing/reloading the page
 
     e.preventDefault(); //stops the form from reloading the pages
     email = document.getElementById("login-email").value;
@@ -122,10 +115,61 @@ loginForm.addEventListener("submit",function(e) {
         prisonPageChance.style.display = "none"
     }
 
-});
+}
+
+//the first input tells the event listener what action to look for (here, submit means when the button is clicked)
+//the second input tells it what to do once the first inout happens
+
+//Step 2: bind an event listener
+//Notice: JQuery can also be used to do this, but it is placed in a different location
+// loginForm.addEventListener("submit",function(e) {
+
+
+//     //since loginForm is calling the event listener, which is using the function which is being passed 'e',
+//     //e and loginForm are the same, therefore e.preventDefault(); stops the loginForm from closing/reloading the page
+
+//     e.preventDefault(); //stops the form from reloading the pages
+//     email = document.getElementById("login-email").value;
+//     password = document.getElementById("login-password").value;
+
+//     result = checkLoginAlt(email, password);
+//     console.log(result);
+
+//     //this closes the login form
+//     //you can put JQuery code in a JS file
+//     $(mlogin).modal("close");
+
+//     if (result === true) {
+//         homePage.style.display = "block"
+//         landingPage.style.display = "none"
+//         signUpPage.style.display = "none"
+//         navbar.style.display = "block"
+//         landingPageAdmin.style.display = "none"
+//         prisonPageChance.style.display = "none"
+//         failedAttempts = 0
+//     } else {
+//         prisonPage.style.display = "block"
+//         prisonPageChance.style.display = "none"
+//         failedAttempts += 1
+//     }
+
+//     if (failedAttempts > 2) {
+//         lockedPage.style.display = "block"
+//         landingPage.style.display = "none"
+//         homePage.style.display = "none"
+//         prisonPage.style.display = "none"
+//         mSignUp.style.display = "none"
+//         landingPageAdmin.style.display = "none"
+//         prisonPageChance.style.display = "none"
+//     }
+
+// });
 
 console.log(loginForm);
 
+
+
+loginForm.addEventListener("submit",loginFormFunction(),);
 
 
 
