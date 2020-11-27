@@ -31,18 +31,28 @@
         </div>
 
         <div class = "modal-content">
-				<div class = "input-field">
-					<input type = "email" id = "input-name" autocomplete="" required/>
-					<label for= "input-name">Input Name</label>
-				</div>
-				<div class = "input-field">
-					<input type = "email" id = "input-food" autocomplete="" required/>
-					<label for= "input-food">Input Food</label>
-				</div>
+			<div class = "input-field">
+				<input type = "email" id = "input-name" autocomplete="" required/>
+				<label for= "input-name">Input Name</label>
+			</div>
+			<div class = "input-field">
+				<input type = "email" id = "input-food" autocomplete="" required/>
+				<label for= "input-food">Input Food</label>
+            </div>
+        </div>
 
 
         <a href="#" id="submit-button" class="btn-large indigo lighten-1 waves-effect waves-light">SUBMIT</a>
 
+        <div class = "modal-content">
+            <div class = "input-field">
+                <input type = "email" id = "input-id" autocomplete="" required/>
+                <label for= "input-id">Input User ID</label>
+            </div>
+        </div>
+
+        <a href="#" id="retrieve-button" class="btn-large indigo lighten-1 waves-effect waves-light">RETRIEVE</a>
+        
         <div>
             <p>Live Update</p>
         </div>
@@ -115,6 +125,8 @@
         //this moves into the database, beginning inside 'introFirebaseDPCS'
         //ref then moves into the child 'users' and a userID, which could be '01', '02', etc.
         database.ref('users/' + userId).set(data);
+        console.log(name);
+        console.log(food);
     }
 
     //this adds a new child of users, "04" (relating to the line of code above)
@@ -128,7 +140,7 @@
 //the below function is called an 'on function'
     var dataChange = database.ref('users/');
 
-    //the on function is an abstraction that looks for change in the values
+    //the on function is an abstraction that looks for change in the values (hence 'value')
     //specifically, for values within 'users', since dataChange is defined with reference to 'users'
     //arrow function
 
@@ -163,6 +175,36 @@
     }
 
     dataChange.on('value',onChange);
+
+</script>
+
+<script>
+
+    var submitButton = document.getElementById("submit-button");
+
+    submitButton.addEventListener("click",function(e) {
+
+    e.preventDefault(); //stops the form from reloading the pages
+    var name = document.getElementById("input-name").value;
+    var food = document.getElementById("input-food").value;
+
+    writeUserData("05",name,food);
+
+});
+
+
+
+    var retrieveButton = document.getElementById("retrieve-button");
+
+    retrieveButton.addEventListener("click",function(e) {
+
+    e.preventDefault(); //stops the form from reloading the pages
+    var inputID = document.getElementById("input-id").value;
+    console.log(inputID);
+    console.log(database.ref('users/' + inputID));
+
+});
+
 
 </script>
 
