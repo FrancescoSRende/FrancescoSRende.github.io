@@ -18,11 +18,50 @@ var url = "https://raw.githubusercontent.com/FrancescoSRende/FrancescoSRende.git
 //Abstraction (initializing objects in materialize - classes, hrefs, jQuery code, etc….)
 
 
+
+
+
+// function process1(response) {
+//     console.log("eee",response)
+//     response.json()
+// }
+
+// function process2(data) {
+
+//     for (i = 0; i < result.length; i = i + 1) {
+//         uNames.push(result[i]["id"])
+//         pWords.push(result[i]["password"])
+//     }
+
+// }
+
+// function failure() {
+//     console.log("RUH ROH RAGGY")
+// }
+
+// p1 = fetch(url);
+
+// p2 = p1.then(process1(response),failure)
+
+// p2.then(process2(data),failure)
+
+// console.log(p2)
+
+
+
+//JS is asynchronous by default, but the calls run quick enough that it usually runs as if it was synchronous
+//a promise ensures that the code actually runs synchronously
+//a fetch returns a promise as a value
+
 //initially an asynchronous process
-p = fetch(url, {})
+var p = fetch(url, {})
     .then(response => response.json()) //arrow function
     //the first 'response' is the parameter of the function (ie. function(parameter))
+    //which is the response taken from the URL
     //and the second 'response' is saying to put that into the json function (instance method)
+    //in order to convert it into a json format
+
+    //because of the way the '.then' operators work, the 'result' is based on the 'response' from the above line of code
     .then(result => {
         console.log(result)
 
@@ -31,12 +70,30 @@ p = fetch(url, {})
             pWords.push(result[i]["password"])
         }
 
-        //
+        
         console.log(uNames)
     });
 
+
+    // function success() {
+    //     console.log("SUCCESS")
+    // }
+
+    // function failure() {
+    //     console.log("FAILURE")
+    // }
+
+    // p.then(success,failure);
+
+    // console.log(p)
+
 //how come this runs before the fetch has completed???
 console.log(pWords)
+//because pWords is so small, the function can run quick enough to have pWords
+//printed out before uNames in the lines above (???)
+
+//if this console.log pWords was defined with respect to the promise (like the functions above, with success and failure)
+//and linked to the 'then' chain, then it would print after uNames
 
 
 //asynchronous functions give the option to use 'try' and 'catch' blocks
