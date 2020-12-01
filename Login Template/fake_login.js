@@ -14,8 +14,12 @@ var pWords = []
 //a link to the JSON file
 var url = "https://raw.githubusercontent.com/FrancescoSRende/FrancescoSRende.github.io/master/Login%20Template/logindata.json";
 
+
+//Abstraction (initializing objects in materialize - classes, hrefs, jQuery code, etc….)
+
+
 //initially an asynchronous process
-fetch(url, {})
+p = fetch(url, {})
     .then(response => response.json()) //arrow function
     //the first 'response' is the parameter of the function (ie. function(parameter))
     //and the second 'response' is saying to put that into the json function (instance method)
@@ -27,9 +31,79 @@ fetch(url, {})
             pWords.push(result[i]["password"])
         }
 
+        //
         console.log(uNames)
-        console.log(pWords)
     });
+
+//how come this runs before the fetch has completed???
+console.log(pWords)
+
+
+//asynchronous functions give the option to use 'try' and 'catch' blocks
+//the 'try' block says to do a certain thing if the promise is fulfilled
+//the 'catch' block says what do to if that promise is not fulfilled
+//for example:
+
+// async function foo() {
+//     try {
+//         const value = await somePromise();
+//         return value;
+//     }
+//     catch (err) {
+//         console.log("Oops, there was an error :(");
+//     }
+// }
+
+
+
+
+// async function foo() {
+//     await somePromise();
+//     return 'success!'
+//     throw Error(‘oops!’)
+// }
+
+// foo()
+// .then((res) => console.log(res)) // 'success!'
+// .catch((err) => console.log(err)) // ‘oops!’
+
+
+
+
+//this async function will take 1000ms to complete since the second await is only begun
+//once the first await is completed
+
+
+// async function inSequence() {
+//     await pause500ms();
+//     await pause500ms(); 
+//     console.log("I will be logged after 1000ms");
+// }
+
+
+
+
+//meanwhile, this async function will only take 500ms to complete; the use of different
+//variables/references means that the await can execute both functions simultaneously
+
+// async function inParallel() {
+//     const await1 = pause500ms();
+//     const await2 = pause500ms();
+//     await await1;
+//     await await2;
+//     console.log("I will be logged after 500ms");
+// }
+
+
+
+
+
+
+
+console.log("test")
+
+//this line of code returns pWords before the fetch code returns uNames
+console.log(pWords)
 
 //the 'then' makes the functions synchronous... it says 'first, fetch the url, then 
 //do '.then(response => response.json())', then do the line after that, then you can move
