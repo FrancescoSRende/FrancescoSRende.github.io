@@ -41,17 +41,37 @@ var url = "https://raw.githubusercontent.com/FrancescoSRende/FrancescoSRende.git
 
 // p1 = fetch(url);
 
-// p2 = p1.then(process1(response),failure)
+// p2 = p1.then(process1,failure)
 
-// p2.then(process2(data),failure)
+// p2.then(process2,failure)
 
 // console.log(p2)
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////
+//Why don’t .then’s come into play when using login buttons
+///////////////////////////////////////////////////////////
+
+
+
+
+
+
 
 
 
 //JS is asynchronous by default, but the calls run quick enough that it usually runs as if it was synchronous
 //a promise ensures that the code actually runs synchronously
 //a fetch returns a promise as a value
+
+//the 'then' makes the functions synchronous... it says 'first, fetch the url, then 
+//do '.then(response => response.json())', then do the line after that, then you can move
+//to the code beneath all of this
 
 //initially an asynchronous process
 var p = fetch(url, {})
@@ -75,22 +95,26 @@ var p = fetch(url, {})
     });
 
 
-    // function success() {
-    //     console.log("SUCCESS")
-    // }
+    function success() {
+        console.log("SUCCESS")
+    }
 
-    // function failure() {
-    //     console.log("FAILURE")
-    // }
+    function failure() {
+        console.log("FAILURE")
+    }
 
-    // p.then(success,failure);
+    p.then(success,failure);
 
-    // console.log(p)
+    console.log(p)
 
 //how come this runs before the fetch has completed???
 console.log(pWords)
 //because pWords is so small, the function can run quick enough to have pWords
 //printed out before uNames in the lines above (???)
+
+
+
+console.log("test")
 
 //if this console.log pWords was defined with respect to the promise (like the functions above, with success and failure)
 //and linked to the 'then' chain, then it would print after uNames
@@ -154,17 +178,6 @@ console.log(pWords)
 
 
 
-
-
-
-console.log("test")
-
-//this line of code returns pWords before the fetch code returns uNames
-console.log(pWords)
-
-//the 'then' makes the functions synchronous... it says 'first, fetch the url, then 
-//do '.then(response => response.json())', then do the line after that, then you can move
-//to the code beneath all of this
 
 
 //How do I check the login?
