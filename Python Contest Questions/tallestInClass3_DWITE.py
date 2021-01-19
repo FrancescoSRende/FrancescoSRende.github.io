@@ -3,37 +3,149 @@ import numbers
 
 def findTallest():
 
-    data = [12, "Jim 1.45 m", "Sally 187 cm", "Joey 1064 mm", "Roel 15.23 dm",
-    "Karl 134 cm", "Melanie 18.9 dm", "Jill 1.54 m", "Sam 133 cm", "Joel 1877 mm",
-    "Roger 17.83 dm", "Karen 178 cm", "Marnie 17.9 dm"]
+    '''
+Recommendation:
+This problem can be daunting, however, if you break it apart to some components and tackle those
+it falls apart nicely. 
+1. 	Start by managing the input. Assuming you store the data as a list of strings, create three 
+	new lists and copy in the data.  The first two elements in this parallel list structure look
+	as follows
+				name = ["Jim","Sally",. . .]
+				height = [1.45, 187, . . . ]
+				units = ["m", "cm", . . .]
+	HL - You could copy it into a 2D list 
+	data2D = [	["Jim","Sally",. . .],
+				[1.45, 187, . . . ],
+				["m", "cm", . . .],
+			]
+]
+2. 	Start off by simplifying the problem by assuming
+		a) All measurements are in the same unit
+		b) You only want to find the single tallest. 
+2.  Create a function that coverts any unit to meters.  What it converts it to doesn't matter, but
+	this allows you to send any meansurment through it and get a standard measurement that can be 
+	compared. 
+'''
 
-    heights = []
+    data = ["Jim 1.45 m",
+            "Sally 187 cm",
+            "Joey 1064 mm",
+            "Roel 15.23 dm",
+            "Karl 134 cm",
+            "Melanie 18.9 dm",
+            "Jill 1.54 m",
+            "Sam 133 cm",
+            "Joel 1877 mm",
+            "Roger 17.83 dm",
+            "Karen 178 cm",
+            "Marnie 17.9 dm"]
 
-    for i in range(1,13):
-        height = ""
+    name = []
+    height = []
+    units = []
 
-        var = data[i]
-        for n in range(0,len(var)):
+    for i in range(0,len(data),1):
 
-            if var[n].isdigit() == True or var[n] == '.':
-                height = height + var[n]
+        loc = data[i].index(' ')
+        n = data[i][0:loc]
+        name.append(n)
         
-        heights.append(height)
+        loc1 = data[i].index(' ',loc+1)
+        
+        h = data[i][loc + 1:loc1]
+        height.append(float(h))
 
-    for i in range(1,13):
-        var = data[i]
+        u = data[i][loc1+1:]
+        units.append(u)
 
-        if var[-3:-1] == " m":
-            heights[i] = heights[i] * 1000
-        elif var[-3:-1] == "dm":
-            heights[i] = heights[i] * 100
-        elif var[-3:-1] == "cm":
-            heights[i] = heights[i] * 10
+
+
+    for i in range(0,len(units),1):
+
+        if units[i] == "m":
+            height[i] = round(height[i] * 1000)
+        elif units[i] == "dm":
+            height[i] = round(height[i] * 100)
+        elif units[i] == "cm":
+            height[i] = round(height[i] * 10)
 
     
-    print(heights)
 
 
+    max1 = height[0]
+    index1 = 0
+
+    max2 = height[0]
+    index2 = 0
+
+    max3 = height[0]
+    index3 = 0
+
+    max4 = height[0]
+    index4 = 0
+
+    max5 = height[0]
+    index5 = 0
+
+
+    indexes = []
+
+    for i in range(0,len(height),1):
+        if height[i] > max1:
+            max1 = height[i]
+            index1 = i
+    
+    indexes.append(index1)
+
+
+
+
+
+    for i in range(0,len(height),1):
+        if height[i] > max2 and i != index1:
+            max2 = height[i]
+            index2 = i
+    
+    indexes.append(index2)
+
+
+
+
+    
+    for i in range(0,len(height),1):
+        if height[i] > max3 and i != index1 and i != index2:
+            max3 = height[i]
+            index3 = i
+        
+    indexes.append(index3)
+    
+
+
+
+
+    for i in range(0,len(height),1):
+        if height[i] > max4 and i != index1 and i != index2 and i != index3:
+            max4 = height[i]
+            index4 = i
+    
+    indexes.append(index4)
+    
+
+
+    for i in range(0,len(height),1):
+        if height[i] > max5 and i != index1 and i != index2 and i != index3 and i != index4:
+            max5 = height[i]
+            index5 = i
+    
+    indexes.append(index5)
+
+
+    
+
+    for i in range(0,len(indexes),1):
+        print(name[indexes[i]])
+
+    
 
 
 
