@@ -25,6 +25,8 @@ def approach0():
     height = []
     units = []
 
+    # using 'split', the list 'temp' is created to store the 3 components from each line of info
+
     for i in range(0, len(data), 1):
         temp = data[i].split(" ")
         name.append(temp[0])
@@ -195,6 +197,14 @@ it falls apart nicely.
 
 
 
+
+
+
+
+
+
+
+
 def approach2():
 
 
@@ -216,6 +226,9 @@ def approach2():
     for i in range(0,len(data),1):
         val = data[i]
 
+
+        # this creates an infinite loop
+        # however, we avoid the infinite loop by crashing the program and using an 'except' line
         while True:
 
 
