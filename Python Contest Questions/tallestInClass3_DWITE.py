@@ -1,7 +1,47 @@
 import math
 import numbers
 
-def findTallest():
+
+
+
+
+def approach0():
+
+
+    data = ["Jim 1.45 m",
+            "Sally 187 cm",
+            "Joey 1064 mm",
+            "Roel 15.23 dm",
+            "Karl 134 cm",
+            "Melanie 18.9 dm",
+            "Jill 1.54 m",
+            "Sam 133 cm",
+            "Joel 1877 mm",
+            "Roger 17.83 dm",
+            "Karen 178 cm",
+            "Marnie 17.9 dm"]
+
+    name = []
+    height = []
+    units = []
+
+    for i in range(0, len(data), 1):
+        temp = data[i].split(" ")
+        name.append(temp[0])
+        height.append(temp[1])
+        units.append(temp[2])
+
+
+
+
+
+
+
+
+
+
+
+def approach1():
 
     '''
 Recommendation:
@@ -46,10 +86,16 @@ it falls apart nicely.
 
     for i in range(0,len(data),1):
 
+        # index returns the first instance of a passed string
+
         loc = data[i].index(' ')
         n = data[i][0:loc]
         name.append(n)
-        
+
+# looks similar but index now takes 2 parameters
+# index is an OVERLOADED method, meaning it is defined by the number of parameters it takes
+# this version of index looks for ' ', but STARTING at index loc + 1
+
         loc1 = data[i].index(' ',loc+1)
         
         h = data[i][loc + 1:loc1]
@@ -149,4 +195,118 @@ it falls apart nicely.
 
 
 
-findTallest()
+def approach2():
+
+
+    data = ["Jim 1.45 m",
+            "Sally 187 cm",
+            "Joey 1064 mm",
+            "Roel 15.23 dm",
+            "Karl 134 cm",
+            "Melanie 18.9 dm",
+            "Jill 1.54 m",
+            "Sam 133 cm",
+            "Joel 1877 mm",
+            "Roger 17.83 dm",
+            "Karen 178 cm",
+            "Marnie 17.9 dm"]
+
+    data1 = []
+
+    for i in range(0,len(data),1):
+        val = data[i]
+
+        while True:
+
+
+    # val = "Jim 1.45 m"
+    # loc = 3
+    # val = "1.45 m"
+    # loc = 4
+    # val = "m"
+    # loc = THIS CAUSES AN ERROR, PROGRAM CRASHES
+
+    # try-except structures allow you to override the default crash process
+
+    # "try these three lines of code, and if something crashes/goes wrong, execute the
+    # code in the 'execute' section"
+
+            try:
+                loc = val.index("")
+                data1.append(val[0:loc])
+                val = val[loc+1:]
+            except:
+                # this gets evaluated when the program crashes
+                data1.append(val)
+                break
+        
+    print(data1)
+
+
+
+
+
+
+
+
+
+def approach3():
+
+
+    data = [
+            ["Jim", "1.45", "m"],
+            ["Sally", "187", "cm"],
+            ...
+            ["Marnie", "17.9", "dm"]
+            ]
+
+    data1 = []
+
+
+    for i in range(0,len(data),1):
+        val = data[i]
+        
+
+        while True:
+
+            temp = []
+
+
+    # val = "Jim 1.45 m"
+    # loc = 3
+    # val = "1.45 m"
+    # loc = 4
+    # val = "m"
+    # loc = THIS CAUSES AN ERROR, PROGRAM CRASHES
+
+    # try-except structures allow you to override the default crash process
+
+    # "try these three lines of code, and if something crashes/goes wrong, execute the
+    # code in the 'execute' section"
+
+            try:
+                loc = val.index("")
+                temp.append(val[0:loc])
+                val = val[loc+1:]
+            except:
+                # this gets evaluated when the program crashes
+                temp.append(val)
+                break
+        
+    print(data1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+approach1()

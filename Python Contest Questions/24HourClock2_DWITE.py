@@ -40,7 +40,7 @@ def convertTime():
         x = "PM"
 
 
-    elif (12 <= h <= 23):
+    elif (13 <= h <= 23):
         x = "PM"
         h = h - 12
     
