@@ -39,6 +39,24 @@ def approach0():
 
 
 
+def convertToMeters (units, height):
+    allInMeters = []
+    for k in range(0,len(units),1):
+        if units[k] == "m":
+            allInMeters.append(float(height[k]))
+        elif units[k] == "dm":
+            allInMeters.append(float(height[k]) / 10)
+        elif units[k] == "cm":
+            allInMeters.append(float(height[k]) / 100)
+        elif units[k] == "mm":
+            allInMeters.append(float(height[k]) / 1000)
+        return allInMeters
+
+
+
+
+
+
 
 
 
@@ -107,6 +125,7 @@ it falls apart nicely.
         units.append(u)
 
 
+    allInMeters = convertToMeters(units, height)
 
     for i in range(0,len(units),1):
 
