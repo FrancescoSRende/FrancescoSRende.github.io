@@ -5,6 +5,13 @@ import numbers
 
 
 
+
+
+
+
+
+
+
 def approach0():
 
 
@@ -51,6 +58,14 @@ def convertToMeters (units, height):
         elif units[k] == "mm":
             allInMeters.append(float(height[k]) / 1000)
         return allInMeters
+
+
+
+
+
+
+
+
 
 
 
@@ -224,6 +239,13 @@ it falls apart nicely.
 
 
 
+
+
+
+
+
+
+
 def approach2():
 
 
@@ -282,50 +304,64 @@ def approach2():
 
 
 
-def approach3():
 
 
-    data = [
-            ["Jim", "1.45", "m"],
-            ["Sally", "187", "cm"],
-            ...
-            ["Marnie", "17.9", "dm"]
-            ]
-
-    data1 = []
 
 
-    for i in range(0,len(data),1):
-        val = data[i]
+
+
+
+
+
+# def approach3():
+
+
+#     # data = [
+#     #         ["Jim", "1.45", "m"],
+#     #         ["Sally", "187", "cm"],
+#     #         ...
+#     #         ["Marnie", "17.9", "dm"]
+#     #         ]
+
+#     data1 = []
+
+
+#     for i in range(0,len(data),1):
+#         val = data[i]
         
 
-        while True:
+#         while True:
 
-            temp = []
+#             temp = []
 
 
-    # val = "Jim 1.45 m"
-    # loc = 3
-    # val = "1.45 m"
-    # loc = 4
-    # val = "m"
-    # loc = THIS CAUSES AN ERROR, PROGRAM CRASHES
+#     # val = "Jim 1.45 m"
+#     # loc = 3
+#     # val = "1.45 m"
+#     # loc = 4
+#     # val = "m"
+#     # loc = THIS CAUSES AN ERROR, PROGRAM CRASHES
 
-    # try-except structures allow you to override the default crash process
+#     # try-except structures allow you to override the default crash process
 
-    # "try these three lines of code, and if something crashes/goes wrong, execute the
-    # code in the 'execute' section"
+#     # "try these three lines of code, and if something crashes/goes wrong, execute the
+#     # code in the 'execute' section"
 
-            try:
-                loc = val.index("")
-                temp.append(val[0:loc])
-                val = val[loc+1:]
-            except:
-                # this gets evaluated when the program crashes
-                temp.append(val)
-                break
+#             try:
+#                 loc = val.index("")
+#                 temp.append(val[0:loc])
+#                 val = val[loc+1:]
+#             except:
+#                 # this gets evaluated when the program crashes
+#                 temp.append(val)
+#                 break
         
-    print(data1)
+#     print(data1)
+
+
+
+
+# approach3()
 
 
 
@@ -341,4 +377,100 @@ def approach3():
 
 
 
-approach1()
+
+
+
+
+
+
+def oliversApproach():
+
+    myfile = open("TALLEST.txt","r")
+    # item is a string that contains the entire file
+    item = myfile.read().split("\n")
+    # now, item, after having been split, becomes a list of strings, each separated by
+    # the '\n' (the paragraph break)
+    # item is a list of ['name 102 cm', 'name1 344.1 mm', etc.]
+    myfile.close()
+
+    n = int(item[0])
+    people = []
+
+    for i in range(1, n+1):
+        # starting at 1 because item[0] is the number of people in the list
+        # irrelevant info
+        people.append(item[i].split())
+        # the above function now creates a two-dimensional list
+        # people is a list, item[i] is an item in the list 'item'
+        # item[i].split() creates a new list from item[i]
+        # ['name 103 cm'] --> ['name', '103', 'cm']
+    
+    cons = {"m":1, "dm":0.1, "cm":0.01, "mm":0.001}
+
+    # converting everything to meters
+
+    for i in range(n):
+        people[i][1] = float(people[i][1]) * cons[people[i][2]]
+    
+    # sorts 'people' by the second item (people[i][1])
+    # multiplies by the corresponding constant (0.1 for dm, 0.01 for cm, etc.)
+    # to convert everything to meters
+
+    people.sort(key = lambda x:x[1])
+
+    for i in range(n-1, n-6, -1):
+        print(people[i][0])
+
+
+
+oliversApproach()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# # basar's approach
+
+
+
+# def convertMeters(h,u):
+#     for i in range(len(u)):
+#         if u[i] == "m":
+#             h[i] = float(h[i])
+
+#         elif u[i] == ""
+
+
+
+
+
+
+
+
+
+
+
+
+# def basarsApproach():
+
+#     file = open("TALLEST.txt", "r")
+#     height = list()
+#     names = list()
+#     metric = list()
+
+
+#     newlst = list()
+
+#     for line in file
+
