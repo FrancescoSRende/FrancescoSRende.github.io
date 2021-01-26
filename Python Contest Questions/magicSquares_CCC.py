@@ -3,78 +3,46 @@ b = input()
 c = input()
 d = input()
 
-line1 = []
-line2 = []
-line3 = []
-line4 = []
+square = []
+square.append(a)
+square.append(b)
+square.append(c)
+square.append(d)
 
-while True:
-    try:
-        loc = a.index("")
-        line1.append(a[0:loc])
-        a = a[loc+1:]
-    except:
-        # this gets evaluated when the program crashes
-        line1.append(a)
-        break
+rowSum1 = 0
+rowSum2 = 0
+rowSum3 = 0
+rowSum4 = 0
 
-while True:
-    try:
-        loc = b.index("")
-        line2.append(b[0:loc])
-        b = b[loc+1:]
-    except:
-        # this gets evaluated when the program crashes
-        line2.append(b)
-        break
-
-while True:
-    try:
-        loc = c.index("")
-        line3.append(c[0:loc])
-        c = c[loc+1:]
-    except:
-        # this gets evaluated when the program crashes
-        line3.append(c)
-        break
-
-while True:
-    try:
-        loc = d.index("")
-        line4.append(d[0:loc])
-        d = d[loc+1:]
-    except:
-        # this gets evaluated when the program crashes
-        line4.append(d)
-        break
-
-lineSum1 = 0
-lineSum2 = 0
-lineSum3 = 0
-lineSum4 = 0
 columnSum1 = 0
 columnSum2 = 0
 columnSum3 = 0
 columnSum4 = 0
-    
-for i in range(0,4,1):
-    lineSum1 = lineSum1 + line1[i]
 
-for i in range(0,4,1):
-    lineSum2 = lineSum2 + line2[i]
+for i in range(0, 4, 1):
+    rowSum1 = rowSum1 + int(a[i])
+    rowSum2 = rowSum2 + int(b[i])
+    rowSum3 = rowSum3 + int(c[i])
+    rowSum4 = rowSum4 + int(d[i])
+    columnSum1 = columnSum1 + int(square[0][i])
+    columnSum2 = columnSum2 + int(square[1][i])
+    columnSum3 = columnSum3 + int(square[2][i])
+    columnSum4 = columnSum4 + int(square[3][i])
 
-for i in range(0,4,1):
-    lineSum3 = lineSum3 + line3[i]
+sums = []
+sums.append(rowSum1)
+sums.append(rowSum2)
+sums.append(rowSum3)
+sums.append(rowSum4)
 
-for i in range(0,4,1):
-    lineSum4 = lineSum4 + line4[i]
+sums.append(columnSum1)
+sums.append(columnSum2)
+sums.append(columnSum3)
+sums.append(columnSum4)
 
-columnSum1 = line1[1] + line2[1] + line3[1] + line4[1]
-columnSum2 = line1[2] + line2[2] + line3[2] + line4[2]
-columnSum3 = line1[3] + line2[3] + line3[3] + line4[3]
-columnSum4 = line1[4] + line2[4] + line3[4] + line4[4]
+contains_duplicates = any(sums.count(element) > 1 for element in sums)
 
-if lineSum1 == lineSum2 and lineSum2 == lineSum3 and lineSum3 == lineSum4 and lineSum4 == columnSum1 and columnSum1 == columnSum2 and columnSum2 == columnSum3 and columnSum3 == columnSum4:
-    print("magic")
-else:
+if contains_duplicates == False:
     print("not magic")
+else:
+    print("magic")
