@@ -8,6 +8,7 @@ def findYear():
     digits = []
 
     while True:
+    # while 1 == 1:
 
         testYear = str(int(testYear) + 1)
         digits = []
