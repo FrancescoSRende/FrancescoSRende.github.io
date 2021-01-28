@@ -1,5 +1,8 @@
 n = int(input())
 
-answer = (n // 2) + 1
-
-print(answer)
+if n == 1 or n >= 9:
+    print("1")
+elif n == 2 or n == 3 or n == 7 or n == 8:
+    print("2")
+else:
+    print("3")
