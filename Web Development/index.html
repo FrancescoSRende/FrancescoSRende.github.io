@@ -47,6 +47,9 @@
         </div>
     </div>
 
+    <div class="container">
+        <a class="waves-effect waves-light btn" id="cuser-BTN">Current User</a>
+    </div>
 
 
 
@@ -63,9 +66,15 @@
             var elems = document.querySelectorAll('.modal');
             var instances = M.Modal.init(elems, options);
         });
+
+        const cuser_BTN = document.getElementById("cuser-BTN")
+        cuser_BTN.addEventListener("click",(e) => {
+            console.log("CURRENT USER:", cuser)
+        });
     </script>
 
     <script src = "index.js"></script>
+
 
 
 </body>

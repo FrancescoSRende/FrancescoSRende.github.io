@@ -7,6 +7,7 @@ const elements_game_nav = document.getElementById("elements-game-nav")
 
 unames = ["user1","user2","user3"]
 pwords = ["pword1","pword2","pword3"]
+cuser = ""
 
 login_form.addEventListener("submit", (e) => {
 
@@ -40,6 +41,7 @@ login_form.addEventListener("submit", (e) => {
                 elements_nav.style.display = "block"
                 elements_game_nav.style.display = "block"
                 login_nav.style.display = "none"
+                cuser = unames[i]
             }
             else {
                 alert("Invalid user!")
