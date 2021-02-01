@@ -77,5 +77,157 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyDts69KKcmRigK-MOlyQ22AC5WritMMNa0",
+            authDomain: "introfirebase-dpcs.firebaseapp.com",
+            databaseURL: "https://introfirebase-dpcs.firebaseio.com",
+            projectId: "introfirebase-dpcs",
+            storageBucket: "introfirebase-dpcs.appspot.com",
+            messagingSenderId: "107579578819",
+            appId: "1:107579578819:web:004eb395cd6a59a0124576",
+            measurementId: "G-CV60VTLZ6G"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        // Initialize Firebase
+    
+        //since firebaseConfig has a unique apiKey (among other things), this initializes firebase
+        //such that when the database is declared with respect to firebase, the computer knows
+        //exactly what database (or authorization, for that matter) the code is talking about
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    
+        var database = firebase.database();
+        //var auth = firebase.auth();
+    
+        //the first 'name' and 'food' is the key of the dictionary, and the second ones are the values
+        //the values will be changed
+        //we say 'find the value at key "name" and change it from "name" to "Paul"'
+        function writeUserData(userId, name, food) {
+            
+            //the second 'name' and 'food' reference the passed variables above
+            //the first ones are the keys of the dictionary
+            data = {
+                name: name,
+                food: food,
+            }
+    
+            //this moves into the database, beginning inside 'introFirebaseDPCS'
+            //ref then moves into the child 'users' and a userID, which could be '01', '02', etc.
+            database.ref('users/' + userId).set(data);
+            console.log(name);
+            console.log(food);
+        }
+    
+        //this adds a new child of users, "04" (relating to the line of code above)
+        //it sets 'name' equal to 'Eli' and 'food' equal to 'pie'
+        //it knows to use 'name' and 'food' because 'data' is called in the database.ref line
+        //and data contains the keys of 'name' and 'food'
+        writeUserData("04","Eli","pie");
+    
+    
+    
+    //the below function is called an 'on function'
+        var dataChange = database.ref('users/');
+    
+        //the on function is an abstraction that looks for change in the values (hence 'value')
+        //specifically, for values within 'users', since dataChange is defined with reference to 'users'
+        //arrow function
+    
+        // dataChange.on('value', (snapshot) =>{
+        //     const data = snapshot.val();
+        //     console.log(data);
+        // });
+    
+        //the moment any values in 'users' are changed, all of the data in 'users' is logged to the console
+        //this means that updates can be seen without reloading the page
+        //furthermore, someone can update the firebase data from firebase itself
+    
+    
+    
+    
+        //this uses passed function notation, by writing the function in the parameter
+        // dataChange.on('value', function(snapshot) {
+        //     const data = snapshot.val();
+        //     console.log(data);
+        // });
+    
+        //for our purposes, arrow function and passed function notation do the exact same thing
+        //they just write it differently
+    
+    
+    
+        //this method of writing the function allows someone to call it wherever, not just within the confines
+        //of the line of code 'dataChange.on('value', function(snapshot)'
+        function onChange(snapshot) {
+            const data = snapshot.val();
+            console.log(data);
+        }
+    
+        dataChange.on('value',onChange);
+    
+    </script>
+    
+    <script>
+    
+        var submitButton = document.getElementById("submit-button");
+    
+        submitButton.addEventListener("click",function(e) {
+    
+        e.preventDefault(); //stops the form from reloading the pages
+        var name = document.getElementById("input-name").value;
+        var food = document.getElementById("input-food").value;
+    
+        writeUserData("05",name,food);
+    
+    });
+    
+    
+    
+        var retrieveButton = document.getElementById("retrieve-button");
+    
+        retrieveButton.addEventListener("click",function(e) {
+    
+        e.preventDefault(); //stops the form from reloading the pages
+        var inputID = document.getElementById("input-id").value;
+        console.log(inputID);
+        console.log(database.ref('users/' + inputID));
+    
+    });
+    
+    
+    </script>
+
+
+
 </body>
 </html>
