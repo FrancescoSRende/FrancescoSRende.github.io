@@ -93,11 +93,33 @@
     
     <script>
 
-
+        /*
         dataDB = database.ref('/elements/').once('value').then((snapshot) => {
-            var result = snapshot.val()
-            console.log(result)
+            dataSTR = ""
+            data = snapshot.val()
+
+            for (i = 0; i < data.length; i = i + 1) {
+                dataSTR = dataSTR + createCard(data[i])
+            }
+
+            elementDisplay.innerHTML = dataSTR
+            
         })
+        */
+
+
+        dataDB = database.ref('/elements/').on('value',(snapshot) => {
+            dataSTR = ""
+            data = snapshot.val()
+
+            for (i = 0; i < data.length; i = i + 1) {
+                dataSTR = dataSTR + createCard(data[i])
+            }
+
+            elementDisplay.innerHTML = dataSTR
+        
+            
+        });
 
 
 
@@ -204,17 +226,7 @@
 
 
 
-        dataSTR = ""
-
-        for (i = 0; i < data["elements"].length; i = i + 1) {
-            dataSTR = dataSTR + createCard(data["elements"][i])
-        }
-
-        elementDisplay.innerHTML = dataSTR
-
-
-
-
+        
 
 
 

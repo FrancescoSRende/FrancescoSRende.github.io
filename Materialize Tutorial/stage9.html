@@ -348,5 +348,68 @@
         });
     </script>
 
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyAawOyWvGEFjDqmtWIHxcGrJqjlhFpqq3U",
+        authDomain: "materializedatabase.firebaseapp.com",
+        projectId: "materializedatabase",
+        storageBucket: "materializedatabase.appspot.com",
+        messagingSenderId: "187728368929",
+        appId: "1:187728368929:web:4a454eba197fced2d09a60"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    database = firebase.database();
+
+
+
+
+
+    dataDB = database.ref('/elements/').on('value',(snapshot) => {
+        dataSTR = ""
+        data = snapshot.val()
+
+        for (i = 0; i < data.length; i = i + 1) {
+            dataSTR = dataSTR + createCard(data[i])
+        }
+
+        elementDisplay.innerHTML = dataSTR
+        
+            
+    });
+
+
+
+
+    const songDisplay = document.getElementById("photos");
+    // elementDisplay.innerHTML = "ddd"
+    console.log(songDisplay)
+
+
+
+
+</script>
+
+
 </body>
 </html>
