@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	   <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+<body>
+
+
+
+	<div>
+
+		
+
+
+
+</body>
+</html>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+
+<script>
+
+
+
+    var firebaseConfig = {
+        apiKey: "AIzaSyA7dHGzsBTcX7MDqsCbso6_uYP1G9fQ5eo",
+        authDomain: "materializefakeauthentication.firebaseapp.com",
+        projectId: "materializefakeauthentication",
+        storageBucket: "materializefakeauthentication.appspot.com",
+        messagingSenderId: "956139276344",
+        appId: "1:956139276344:web:7671551afc47de8ddb3ecd"
+    };
+    firebase.initializeApp(firebaseConfig);
+    database = firebase.database();
+
+
+    
+    
+
+
+
+
+	var userInfo =  [
+                        { 
+                            "username": "RendevousTM",
+                            "password": "password"
+                        },
+                        { 
+                            "username": "someoneElse",
+                            "password": "something"
+                        }
+				    ]
+			
+
+	//This generates a Promise - Process in web-development which is generated when a task is
+	//being done that takes time
+
+    //you can store the promise in a variable (x) and then access it later on
+    x = database.ref().set({
+        userInfo
+  	})
+
+    //the above '.then' runs right after the initial promise is set, but as a result
+    //it prints 'result' before result has a value (before it is defined)
+
+    // x = database.ref().set({
+   	// 	users
+  	// })
+
+
+    //this code accesses the database, then the instance function 'once' accesses the
+    //database and accesses its values, *then* returns those values in the variable
+    //'snapshot'
+    //snapshot is then logged to the console
+
+    //'once' will pull the data once and only once
+    //'on' pulls the data when the page is loaded and then listens for changes in the
+    //database
+
+    //this x is a variable containing a promise from above
+  	console.log(x)
+
+    //this '.then', since it is being used in a separate block of code from the initial
+    //use of the promise variable x, only runs once the promise has been fulfilled
+    //(only once the database has been set and can return something)
+  	x.then((val) => {
+  		console.log("Database updated!")
+
+  		
+  		firebase.database().ref().once('value').then((snapshot) => {
+  			console.log(snapshot.val())
+
+  		});
+  	});
+
+</script>

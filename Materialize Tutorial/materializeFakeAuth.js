@@ -41,7 +41,7 @@
 
 
 
-	var bands = [
+	var bands =  [
 					{ 
 						"name": "Faith No More",
 						"genre": "Alternative Metal, Funk Metal", 

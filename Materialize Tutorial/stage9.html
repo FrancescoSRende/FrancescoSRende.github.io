@@ -90,7 +90,7 @@
     
 
 
-    <!-- Modal Structure -->
+    <!-- Log In Modal Structure -->
     <div id="login-modal" class="modal">
         <div class="modal-content">
             <form id="login-form" autocomplete="off">
@@ -110,9 +110,36 @@
             </form>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Create New User</a>
+            <a href="#signup-modal" id="newUserBTN" class="modal-trigger modal-close waves-effect waves-green btn-flat">Create New User</a>
         </div>
     </div>
+
+
+
+
+
+
+    <!-- Sign Up Modal Structure -->
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <form id="signup-form" autocomplete="off">
+                <div class="input-field">
+                    <input type="text" id="new_username" autocomplete="" required/>
+                    <label for="new_username">User Name</label>
+                </div>
+
+                <div class="input-field">
+                    <input type="password" id="new_password" autocomplete="" required/>
+                    <label for="new_password">Password</label>
+                </div>
+
+                <button class="btn teal darken-2 z-depth-0">Create Account</button>
+
+                
+            </form>
+        </div>
+    </div>
+
 
 
 
@@ -179,6 +206,10 @@
     <!-- songs -->
 
     <div class="container">
+
+        <div class="center-align">
+            <h2 class="indigo-text text-darken-4">Good Music</h2>
+        </div>
 
         <div class="row" id="songDisplay">
             <div class="col s12 m6 l4">
@@ -409,7 +440,7 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
         https://firebase.google.com/docs/web/setup#available-libraries -->
 
-<script>
+    <script>
     // Your web app's Firebase configuration
     var firebaseConfig = {
         apiKey: "AIzaSyAawOyWvGEFjDqmtWIHxcGrJqjlhFpqq3U",
@@ -483,7 +514,128 @@
 
 
 
-</script>
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+    var userData = []
+
+
+
+
+
+
+
+
+    const sign_up_form = document.getElementById("signup-form")
+
+    userDataDB = database.ref('/userInfo/').on('value',(snapshot) => {
+        dataSTR = ""
+        data = snapshot.val()
+        console.log(data)
+
+        
+            
+    });
+
+
+    sign_up_form.addEventListener("submit", (e) => {
+
+        console.log(e)
+        console.log(e.cancelBubble)
+        e.preventDefault()
+
+        newUname = sign_up_form["new_username"].value
+        newPword = sign_up_form["new_password"].value
+
+
+
+
+
+
+
+        data.push({
+            username: newUname,
+            password: newPword
+        });
+
+
+        var postData = {
+            username: newUname,
+            password: newPword
+        }
+
+        var newPostKey = firebase.database().ref().child('userInfo').push().key;
+
+        var updates = {};
+
+        updates['userInfo/' + newPostKey] = postData;
+
+        return firebase.database().ref().update(updates);
+
+
+
+    console.log(data)
+
+
+
+
+
+
+
+
+
+    //add an event listener to logout nav
+    //the swap the display settings of each nav element
+
+
+    //option 2 - send to firebase for authorization - for real
+
+    const modal = document.querySelector("#signup-modal")
+    M.Modal.getInstance(modal).close();
+
+
+    });
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    </script>
+
+
 
 
 </body>

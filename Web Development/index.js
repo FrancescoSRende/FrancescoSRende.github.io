@@ -4,6 +4,30 @@ const logout_nav = document.getElementById("logout-nav")
 const elements_nav = document.getElementById("elements-nav")
 const elements_game_nav = document.getElementById("elements-game-nav")
 
+const sign_up_form = document.getElementById("signup-form")
+
+
+
+
+/* <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script> */
+/* <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script> */
+
+
+var firebaseConfig = {
+    apiKey: "AIzaSyA7dHGzsBTcX7MDqsCbso6_uYP1G9fQ5eo",
+    authDomain: "materializefakeauthentication.firebaseapp.com",
+    projectId: "materializefakeauthentication",
+    storageBucket: "materializefakeauthentication.appspot.com",
+    messagingSenderId: "956139276344",
+    appId: "1:956139276344:web:7671551afc47de8ddb3ecd"
+};
+firebase.initializeApp(firebaseConfig);
+database = firebase.database();
+
+
+
+
+
 
 unames = ["user1","user2","user3"]
 pwords = ["pword1","pword2","pword3"]
@@ -76,4 +100,12 @@ logout_nav.addEventListener("click", (e) => {
     elements_game_nav.style.display = "none"
     login_nav.style.display = "block"
 
+});
+
+
+
+
+userDataDB = database.ref('/userInfo/').once('value').then((snapshot) => {
+    userData = snapshot.val()
+    console.log(userData)
 });
