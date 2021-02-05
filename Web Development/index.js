@@ -9,20 +9,7 @@ const sign_up_form = document.getElementById("signup-form")
 
 
 
-/* <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script> */
-/* <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script> */
 
-
-var firebaseConfig = {
-    apiKey: "AIzaSyA7dHGzsBTcX7MDqsCbso6_uYP1G9fQ5eo",
-    authDomain: "materializefakeauthentication.firebaseapp.com",
-    projectId: "materializefakeauthentication",
-    storageBucket: "materializefakeauthentication.appspot.com",
-    messagingSenderId: "956139276344",
-    appId: "1:956139276344:web:7671551afc47de8ddb3ecd"
-};
-firebase.initializeApp(firebaseConfig);
-database = firebase.database();
 
 
 
@@ -105,7 +92,31 @@ logout_nav.addEventListener("click", (e) => {
 
 
 
+
+
 userDataDB = database.ref('/userInfo/').once('value').then((snapshot) => {
     userData = snapshot.val()
     console.log(userData)
 });
+
+
+
+
+function newUser() {
+
+    var postData = {
+        username: "new user",
+        password: "password"
+    };
+  
+    // Get a key for a new Post.
+    var newPostKey = firebase.database().ref().child('userInfo').push().key;
+  
+    // Write the new post's data simultaneously in the posts list and the user's post list.
+    var updates = {};
+    updates['userInfo/' + newPostKey] = postData;
+  
+    return firebase.database().ref().update(updates);
+}
+  
+newUser()

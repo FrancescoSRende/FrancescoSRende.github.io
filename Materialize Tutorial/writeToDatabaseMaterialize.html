@@ -66,8 +66,8 @@
 						"good album": "Nocturnal", 
 						"good song 1": "Sunless Empire", 
                         "good song 2": "Everything Went Black",
-						"link 1": "",
-                        "link 2": ""
+						"link 1": "https://www.youtube.com/watch?v=UMyY1sOa0DM&ab_channel=TheBlackDahliaMurder-Topic",
+                        "link 2": "https://www.youtube.com/watch?v=kSiuE54fl48&ab_channel=MetalBladeRecords"
 					}
 				]
 			
@@ -76,9 +76,18 @@
 	//being done that takes time
 
     //you can store the promise in a variable (x) and then access it later on
-    x = database.ref().set({
-   		bands
+	x = database.ref('/bands/').set({
+		bands
   	})
+
+	// this will not wipe out the entire old database, but instead only sets the
+	// child of the database, 'elements'
+	// we now have a database, a child elements, and its child, also called elements
+	// which contains the actual information
+
+	// x = database.ref("/elements/").set({
+	// 	bands
+	// })
 
     //the above '.then' runs right after the initial promise is set, but as a result
     //it prints 'result' before result has a value (before it is defined)
