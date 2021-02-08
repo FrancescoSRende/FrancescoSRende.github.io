@@ -226,7 +226,71 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="modal-footer">
+            <a href="#band-modal" id="bandBTN" class="modal-trigger modal-close waves-effect waves-green btn-flat">Band Suggestions?</a>
+        </div>
+
     </div>
+
+
+
+
+
+
+
+    <!-- Band Modal Structure -->
+    <div id="band-modal" class="modal">
+        <div class="modal-content">
+            <form id="band-form" autocomplete="off">
+                <div class="input-field">
+                    <input type="text" id="new_band" autocomplete="" required/>
+                    <label for="new_band">Band Name</label>
+                </div>
+
+                <div class="input-field">
+                    <input type="text" id="new_genre" autocomplete="" required/>
+                    <label for="new_genre">Genre(s)</label>
+                </div>
+
+                <div class="input-field">
+                    <input type="text" id="new_album" autocomplete="" required/>
+                    <label for="new_album">Good Album</label>
+                </div>
+
+                <div class="input-field">
+                    <input type="text" id="new_song1" autocomplete="" required/>
+                    <label for="new_song1">Song 1</label>
+                </div>
+
+                <div class="input-field">
+                    <input type="text" id="new_song2" autocomplete="" required/>
+                    <label for="new_song2">Song 2</label>
+                </div>
+
+                <div class="input-field">
+                    <input type="text" id="new_song_link1" autocomplete="" required/>
+                    <label for="new_song_link1">Song 1 Link</label>
+                </div>
+
+                <div class="input-field">
+                    <input type="text" id="new_song_link2" autocomplete="" required/>
+                    <label for="new_song_link2">Song 2 Link</label>
+                </div>
+
+                <button class="btn teal darken-2 z-depth-0">Submit New Band</button>
+
+                
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
 
 
 
@@ -495,12 +559,12 @@
                 <div class="card small blue darken-1">
                     <div class="card-content white-text">
                         <span class="card-title">${elemOBJ["name"]}: ${elemOBJ["genre"]}</span>
-                        <p>${elemOBJ["good album"]}</p>
+                        <p>${elemOBJ["goodAlbum"]}</p>
                     </div>
                     <div class="card-action">
-                        <a href="${elemOBJ["link 1"]}">${elemOBJ["good song 1"]}</a>
+                        <a href="${elemOBJ["link1"]}">${elemOBJ["goodSong1"]}</a>
                         <p>\n</p>
-                        <a href="${elemOBJ["link 2"]}">${elemOBJ["good song 2"]}</a>
+                        <a href="${elemOBJ["link2"]}">${elemOBJ["goodSong2"]}</a>
                     </div>
                 </div>
             </div>
@@ -634,6 +698,59 @@
 
 
     });
+
+
+
+
+
+
+
+
+
+    const band_form = document.getElementById("signup-form")
+
+
+    band_form.addEventListener("submit", (e) => {
+
+        e.preventDefault()
+
+        newBand = band_form["new_band"].value
+        newGenre = band_form["new_genre"].value
+        newAlbum = band_form["new_album"].value
+        newSong1 = band_form["new_song1"].value
+        newSong2 = band_form["new_song2"].value
+        newSongLink1 = band_form["new_song_link1"].value
+        newSongLink2 = band_form["new_song_link2"].value
+
+
+
+        var postBandData = {
+            name: newBand,
+            genre: newGenre,
+            goodAlbum: newAlbum,
+            goodSong1: newSong1,
+            goodSong2: newSong2,
+            link1: newSongLink1,
+            link2: newSongLink2,
+        }
+
+        var newBandPostKey = firebase.database().ref().child('bands/bands').push().key;
+
+        var bandUpdates = {};
+
+        bandUpdates['bands/bands/' + newBandPostKey] = postBandData;
+
+        x = firebase.database().ref('/bands/').update(bandUpdates);
+
+
+
+        const bandModal = document.querySelector("#band-modal")
+        M.Modal.getInstance(bandModal).close();
+
+
+
+    });
+
 
 
 
