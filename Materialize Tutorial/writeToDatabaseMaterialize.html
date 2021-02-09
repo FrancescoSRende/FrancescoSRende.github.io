@@ -75,10 +75,24 @@
 	//This generates a Promise - Process in web-development which is generated when a task is
 	//being done that takes time
 
+
+	function writeNewPost(uid, username, picture, title, body) {
+		// A post entry.
+		
+		// Get a key for a new Post.
+		var newPostKey = firebase.database().ref().child('bands').push().key;
+
+		// Write the new post's data simultaneously in the posts list and the user's post list.
+		var updates = {};
+		updates['/bands/' + newPostKey] = bands;
+
+		return firebase.database().ref().update(updates);
+	}
+
     //you can store the promise in a variable (x) and then access it later on
 	x = database.ref('/bands/').set({
 		bands
-  	})
+	})
 
 	// this will not wipe out the entire old database, but instead only sets the
 	// child of the database, 'elements'

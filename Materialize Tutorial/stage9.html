@@ -9,11 +9,12 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-    <title>Photo Ninja</title>
+    <title>Francesco's Personal Website</title>
 
     <style>
         header {
-            background: url(Project\ Images/man.jpg);
+            /* background: url(Project\ Images/man.jpg); */
+            background: url(Images/faith\ no\ more.jpg);
             background-size: cover;
             background-position: center;
             min-height: 1000px;
@@ -149,6 +150,10 @@
 
     <section class="container section scrollspy" id="photos" style = "display: none">
 
+        <div class="col s12 l6 center-align">
+            <h1 class="indigo-text text-darken-4">Music</h1>
+        </div>
+
 
         <div class="row">
             <div class="col s12 l4">
@@ -228,9 +233,10 @@
         </div>
 
 
-        <div class="modal-footer">
-            <a href="#band-modal" id="bandBTN" class="modal-trigger modal-close waves-effect waves-green btn-flat">Band Suggestions?</a>
+        <div class="modal-footer input-field center">
+            <a href="#band-modal" id="bandBTN" class="modal-trigger modal-close teal waves-effect waves-green btn">Band Suggestions?</a>
         </div>
+
 
     </div>
 
@@ -279,7 +285,7 @@
                     <label for="new_song_link2">Song 2 Link</label>
                 </div>
 
-                <button class="btn teal darken-2 z-depth-0">Submit New Band</button>
+                <button class="btn teal z-depth-0">Submit New Band</button>
 
                 
             </form>
@@ -306,7 +312,7 @@
     <div class="parallax-container" id="parallax"  style = "display: none">
 
         <div class="parallax">
-            <img src="Project Images/street.jpg" alt="" class="responsive-img">
+            <img src="Images/between the buried and me.jpg" alt="" class="responsive-img">
         </div>
     </div>
 
@@ -376,7 +382,7 @@
     <div class="parallax-container" id="parallax2" style = "display: none">
 
         <div class="parallax">
-            <img src="Project Images/stars.jpg" alt="" class="responsive-img">
+            <img src="Images/converge.jpg" alt="" class="responsive-img">
         </div>
     </div>
 
@@ -468,9 +474,52 @@
         </div>
 
         <class class="footer-copyright grey darken-4">
-            <div class="container center-align">&copy; 2020 Photo Ninja</div>
+            <div class="container center-align">&copy; 2020 Not Actually Copyrighted</div>
         </class>
+
+
+        <div class="modal-footer input-field center">
+            <a href="#secret-modal" id="secretBTN" class="modal-trigger modal-close teal waves-effect waves-green btn">Super Secret Page</a>
+        </div>
+
+        <div class="modal-footer input-field center">
+            <a href="secretPage.html" id="secretPortal" class="modal-trigger modal-close teal waves-effect waves-green btn" style = "display: none">ENTER, WORTHY ONE!</a>
+        </div>
     </footer>
+
+
+
+
+
+
+
+
+    <!-- Secret Modal Structure -->
+    <div id="secret-modal" class="modal">
+        <div class="modal-content">
+            <form id="secret-form" autocomplete="off">
+                <div class="input-field">
+                    <input type="password" id="secret_password" autocomplete="" required/>
+                    <label for="secret_password">Super Secret Password</label>
+                </div>
+                <button class="btn teal z-depth-0">Let's Do This</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -553,7 +602,6 @@
 
 
     function createCard(elemOBJ) {
-        console.log(elemOBJ)
             const card = `
             <div class="col s12 m6 l4">
                 <div class="card small blue darken-1">
@@ -577,12 +625,15 @@
 
 
 
-    dataDB = database.ref('/bands/bands/').on('value',(snapshot) => {
+    database.ref('/bands/bands/').on('value',(snapshot) => {
         dataSTR = ""
         data = snapshot.val()
+        // console.log(data)
 
-        for (i = 0; i < data.length; i = i + 1) {
-            dataSTR = dataSTR + createCard(data[i])
+        keys = Object.keys(data)
+
+        for (i = 0; i < keys.length; i = i + 1) {
+            dataSTR = dataSTR + createCard(data[keys[i]])
         }
 
         songDisplay.innerHTML = dataSTR
@@ -707,7 +758,7 @@
 
 
 
-    const band_form = document.getElementById("signup-form")
+    const band_form = document.getElementById("band-form")
 
 
     band_form.addEventListener("submit", (e) => {
@@ -734,18 +785,18 @@
             link2: newSongLink2,
         }
 
-        var newBandPostKey = firebase.database().ref().child('bands/bands').push().key;
+        var newBandPostKey = firebase.database().ref().child('bands').push().key;
 
         var bandUpdates = {};
 
-        bandUpdates['bands/bands/' + newBandPostKey] = postBandData;
+        bandUpdates['bands/' + newBandPostKey] = postBandData;
 
         x = firebase.database().ref('/bands/').update(bandUpdates);
 
 
 
-        const bandModal = document.querySelector("#band-modal")
-        M.Modal.getInstance(bandModal).close();
+        const modal = document.querySelector("#band-modal")
+        M.Modal.getInstance(modal).close();
 
 
 
@@ -822,6 +873,38 @@
 
     });
 
+
+
+
+
+
+
+
+
+
+
+    const secret_form = document.getElementById("secret-form")
+
+    secret_form.addEventListener("submit", (e) => {
+
+        e.preventDefault()
+
+        password = secret_form["secret_password"].value
+
+
+
+        if (password == "FaithNoMoreForEver") {
+            secretPortal.style.display = "block"
+            }
+            else {
+                alert("Invalid password!")
+            }
+
+        const modal = document.querySelector("#secret-modal")
+        M.Modal.getInstance(modal).close();
+
+
+    });
 
     
 
