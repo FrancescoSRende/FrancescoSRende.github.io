@@ -43,7 +43,7 @@
 
 	var bands = [
 					{ 
-						"name": "Faith No More",
+						"name": "fff",
 						"genre": "Alternative Metal, Funk Metal", 
 						"goodAlbum": "Angel Dust", 
 						"goodSong1": "Epic",
@@ -90,9 +90,9 @@
 	}
 
     //you can store the promise in a variable (x) and then access it later on
-	x = database.ref('/bands/').set({
-		bands
-	})
+	// x = database.ref('/bands/').set({
+	// 	bands
+	// })
 
 	// this will not wipe out the entire old database, but instead only sets the
 	// child of the database, 'elements'
@@ -121,19 +121,19 @@
     //database
 
     //this x is a variable containing a promise from above
-  	console.log(x)
+  	// console.log(x)
 
     //this '.then', since it is being used in a separate block of code from the initial
     //use of the promise variable x, only runs once the promise has been fulfilled
     //(only once the database has been set and can return something)
-  	x.then((val) => {
-  		console.log("Database updated!")
+  	// x.then((val) => {
+  	// 	console.log("Database updated!")
 
   		
-  		firebase.database().ref().once('value').then((snapshot) => {
-  			console.log(snapshot.val())
+  	// 	firebase.database().ref().once('value').then((snapshot) => {
+  	// 		console.log(snapshot.val())
 
-  		});
-  	});
+  	// 	});
+  	// });
 
 </script>

@@ -478,9 +478,9 @@
         </class>
 
 
-        <!-- <div class="modal-footer input-field center">
+        <div class="modal-footer input-field center">
             <a href="#secret-modal" id="secretBTN" class="modal-trigger modal-close teal waves-effect waves-green btn">Super Secret Page</a>
-        </div> -->
+        </div>
 
         <div class="modal-footer input-field center">
             <a href="secretPage.html" id="secretPortal" class="modal-trigger modal-close teal waves-effect waves-green btn" style = "display: none">ENTER, WORTHY ONE!</a>
@@ -495,7 +495,7 @@
 
 
     <!-- Secret Modal Structure -->
-    <!-- <div id="secret-modal" class="modal">
+    <div id="secret-modal" class="modal">
         <div class="modal-content">
             <form id="secret-form" autocomplete="off">
                 <p>Please enter the super secret password:</p>
@@ -503,12 +503,10 @@
                     <input type="password" id="secret_password" autocomplete="" required/>
                     <label for="secret_password">Super Secret Password</label>
                 </div>
-                <div class="modal-footer">
-                    <a class="modal-trigger modal-close waves-effect waves-green btn-flat">Let's Do This</a>
-                </div>
+                <button class="btn teal darken-2 z-depth-0">Let's Do This</button>
             </form>
         </div>
-    </div> -->
+    </div>
 
 
 
@@ -886,31 +884,45 @@
 
 
 
-    // const secret_form = document.getElementById("secret-form")
-    // const secretPortal = document.getElementById("secretPortal")
+    const secret_form = document.getElementById("secret-form")
+    const secretPortal = document.getElementById("secretPortal")
 
-    // secret_form.addEventListener("submit", (e) => {
+    secret_form.addEventListener("submit", (e) => {
 
-    //     e.preventDefault()
-
-    //     password = secret_form["secret_password"].value;
-
-
-
-    //     if (password == "FaithNoMoreForEver") {
-    //         secretPortal.style.display = "block";
-    //         }
-    //         else {
-    //             alert("Invalid password!");
-    //         }
-
-    //     const modal = document.querySelector("#secret-modal")
-    //     M.Modal.getInstance(modal).close();
-
-
-    // });
-
+        e.preventDefault()
     
+        console.log("aaaaaa")
+
+        password = secret_form["secret_password"].value;
+
+        console.log("////////")
+
+        if (password == "FaithNoMoreForEver") {
+            secretPortal.style.display = "block";
+            }
+            else {
+                alert("Invalid password!");
+            }
+
+        console.log("*******")
+
+        const modal = document.querySelector('#secret-modal')
+	    M.Modal.getInstance(modal).close();
+
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+    window.open('mailto:test@example.com');
 
 
 
