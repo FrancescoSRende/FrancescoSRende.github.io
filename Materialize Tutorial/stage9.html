@@ -684,8 +684,6 @@
     var unames = []
     var pwords = []
 
-    const sign_up_form = document.getElementById("signup-form")
-
     userDataDB = database.ref('/userInfo/').on('value',(snapshot) => {
         dataSTR = ""
         data = snapshot.val()
@@ -703,6 +701,9 @@
             
     });
 
+    
+
+    const sign_up_form = document.getElementById("signup-form")
 
     sign_up_form.addEventListener("submit", (e) => {
 
@@ -809,7 +810,7 @@
 
 
 
-
+    const login_form = document.querySelector("#login-form")
 
 
 

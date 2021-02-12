@@ -1,4 +1,3 @@
-const login_form = document.querySelector("#login-form")
 const login_nav = document.getElementById("login-nav")
 const logout_nav = document.getElementById("logout-nav")
 
