@@ -1,12 +1,3 @@
-# TRACE TABLE
-# TRACE TABLE
-# TRACE TABLE
-# TRACE TABLE
-# TRACE TABLE
-# TRACE TABLE
-# TRACE TABLE
-
-
 def time():
     # Taking both variables as inputs
     timeLimit = int(input())
