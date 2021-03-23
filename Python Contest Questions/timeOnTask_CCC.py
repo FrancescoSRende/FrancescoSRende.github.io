@@ -10,6 +10,7 @@ def time():
     for i in range(0, numChores, 1):
         chores.append(int(input()))
 
+
     # Sorting the chores, since in order to do the maximum amount of chores, we need
     # to do the shortest/smallest ones first
     chores.sort()
@@ -24,30 +25,34 @@ def time():
 
     # This will only run while the total time spent is less than the time limit
     while total < timeLimit:
-        # We add the 'smallest' chore to the total
-        total = total + chores[i]
-        # and then we add one to i (the number of chores completed)
-        i = i + 1
+        if i < len(chores):
+            # We add the 'smallest' chore to the total
+            total = total + chores[i]
+            # and then we add one to i (the number of chores completed)
+            i = i + 1
 
-        # If we have now spent more time than the time limit has allowed, we have gone
-        # over the time limit and thus need to remove the last chore
-        # Thus, we subtract 1 from i and print that
-        if total > timeLimit:
-            print(str(i - 1))
-            return
+            # If we have now spent more time than the time limit has allowed, we have gone
+            # over the time limit and thus need to remove the last chore
+            # Thus, we subtract 1 from i and print that
+            if total > timeLimit:
+                print(str(i - 1))
+                return
 
-        # Otherwise, if the total time spent is exactly equal to the time limit, we
-        # can print i as is, since the number of chores taken into account thus far
-        # is just right
-        elif total == timeLimit:
-            print(i)
+            # Otherwise, if the total time spent is exactly equal to the time limit, we
+            # can print i as is, since the number of chores taken into account thus far
+            # is just right
+            elif total == timeLimit:
+                print(i)
+                return
+        else:
+            print(len(chores))
             return
         
     # A failsafe if we go through the entire program without total ever reaching
     # timeLimit (ie. if all of the chores combined add up to less than the time
     # limit, we just print out the number of chores, since we can do all of them)
-    print(i)
-    return
+    # print(i)
+    # return
 
 
 
@@ -85,8 +90,10 @@ def time():
     # A failsafe if we go through the entire program without total ever reaching
     # timeLimit (ie. if all of the chores combined add up to less than the time
     # limit, we just print out the number of chores, since we can do all of them)
-    print(i)
-    return
+        
+    if total2 < timeLimit:
+        print(str(len(chores)))
+        return
     
 # Since we have returns inside the above code, we need to define it as a function
 # and then call it down below
