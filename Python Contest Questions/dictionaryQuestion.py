@@ -17,19 +17,26 @@ def printNumbers(dict):
     #     print(x, y)
     # # ^ Prints out all the key names and values
     
-    lst = []
-    for x in dict:
-        if type(dict[x]) == int:
-            lst.append(dict[x])
-    
-
+    # lst = []
     sum = 0
-    for i in range(len(lst)):
-        sum = sum + lst[i]
+    for x in dict:
+        if type(dict[x]) == int or type(dict[x]) == float:
+            # lst.append(dict[x])
+            sum = sum + dict[x]
+
+    # if int(sum) == sum:
+    #     return int(sum)
+
+    if sum // 1 == sum:
+        return int(sum)
+
+
+    # for i in range(len(lst)):
+    #     sum = sum + lst[i]
     
     return sum
 
-d = {'name': 'Jack', 'age': 1, 'num': 2, 'number': 3}
+d = {'name': 'Jack', 'age': 1, 'num': 2.0, 'number': 3}
 
 # print(d["name"])
 
@@ -44,9 +51,29 @@ def dictionaryFunction(dict):
 
     dict['favNum'] = newVar
 
+
     # for x in dict:
     #     if type(dict[x]) == str:
-    #         print(dict.pop(x))
+    #         dict.pop(x)
+
+    # When writing 'for x in dict', Python pre-establishes the size of the dictionary
+    # As a result, popping a value changes the pre-established size of the dictionary
+    # Which creates an error
+    # This could potentially be accomplished by using a 'while' loop
+
+
+    tKeys = []
+
+    for x in dict:
+        if type(dict[x]) == str:
+            tKeys.append(x)
+
+    for i in range(0, len(tKeys), 1):
+        dict.pop(tKeys[i])
+
+
+    # Python reads a line and instantly executes it
+    # Java reads a section of code before executing it
          
     for x in dict:
         if type(dict[x]) == int:
@@ -54,9 +81,11 @@ def dictionaryFunction(dict):
                 print(str(dict[x]) + " is even.")
             else:
                 print(str(dict[x]) + " is odd.")
+
+    return dict
     
 
-d = {'name': 'Jack', 'age': 1, 'num': 2, 'number': 3}
+d = {'name': 'Jack', 'age': 1, 'num': '2', 'number': 3}
 
 # print(d["name"])
 
