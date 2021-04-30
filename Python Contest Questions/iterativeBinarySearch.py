@@ -34,6 +34,39 @@ else:
     print("Element is not present in array")
 
 
+
+def binarySearchMario(A, x):
+    c = sorted(A)
+    left = 0
+    right = len(A) - 1
+    while left <= right:
+        middle = int((left + right) / 2)
+        if x == A[middle]:
+            return middle
+        elif x < A[middle]:
+            right = middle - 1
+        else:
+            left = middle + 1
+
+
+
+def binarySearchMiskew(a, value):
+    left = 0
+    right = len(a) - 1
+
+    while(left <= right):
+        middle = (left + right) // 2
+
+        if (a[middle] < value):
+            left = middle + 1
+        elif (a[middle] > value):
+            right = middle - 1
+        else:
+            return middle
+        
+    return -1
+    # -1 is an invalid index, so if it is returned, we know that we havent found the object
+
 # def myBinarySearch(n, arr):
 #     arr = arr.sort()
 
