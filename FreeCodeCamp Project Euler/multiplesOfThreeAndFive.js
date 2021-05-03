@@ -42,3 +42,58 @@ function multiplesOf3and5Version2(number) {
     }
     
     multiplesOf3and5Version2(1000);
+
+
+
+function multiplesV3(number) {
+  var sum = 0
+  var mult3List = []
+  var mult5List = []
+
+  for (var i = 1; i < number; i = i + 1) {
+    var mult3 = 3 * i
+    var mult5 = 5 * i
+    if (mult3 < number) {
+      mult3List.push(mult3)
+    }
+    if (mult5 < number) {
+      mult5List.push(mult5)
+    }
+  }
+
+  for (var i = 0; i < mult5List.length; i = i + 1) {
+    if (mult3List.includes(mult5List[i])) {
+      mult5List.pop()
+    }
+  }
+}
+
+
+
+
+function multiplesV4(number) {
+  var sum = 0
+  var mult3List = []
+  var mult5List = []
+
+  for (var i = 1; i < number; i = i + 1) {
+    var mult3 = 3 * i
+    var mult5 = 5 * i
+    var list = new Set()
+    if (mult3 < number) {
+      list.add(mult3)
+    }
+    if (mult5 < number) {
+      list.add(mult5)
+    }
+  }
+
+  //this 'for each' loop goes through each UNIQUE element of the list
+  //as a result, duplicates are ignored
+  for (let item of list) {
+    sum = sum + item
+  }
+  return sum
+}
+
+multiplesV4(1000);
