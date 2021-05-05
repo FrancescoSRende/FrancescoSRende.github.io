@@ -1,6 +1,4 @@
-def palindromeCheck():
-    a = input("Give number: ")
-    a = str(a)
+def palindromeCheck(a):
 
     if len(a) % 2 == 0:
         front = str(a[:len(a)//2])
@@ -29,16 +27,15 @@ def palindromeCheck():
         return True
     return False
 
-print(palindromeCheck())
+print(palindromeCheck(10))
 
 
 
-def palindromeCheckB():
-    a = input('input number: ')
-    s = str(a)
+def palindromeCheckB(s):
+
     for i in range(0, len(s)//2, 1):
         if s[i] != s[len(s)-1-i]:
             return False
     return True
 
-print(palindromeCheckB())
+print(palindromeCheckB(10))
