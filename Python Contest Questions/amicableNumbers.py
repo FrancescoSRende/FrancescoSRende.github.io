@@ -31,3 +31,29 @@ def sumAmicableNumbers(a):
 
 
 print(sumAmicableNumbers(10))
+
+
+
+def sumFactors(n):
+    factors = set()
+    for i in range(1, int(n**(1/2))+1):
+        if n % i == 0:
+            factors.add(i)
+            factors.add(n//i)
+
+    
+    return sum(factors) - n
+
+
+def sumAmicableNumbersB(n):
+
+    amicableSet = set()
+    for i in range(1, n+1):
+        numA = sumFactors(i)
+        numB = sumFactors(numA)
+
+        if numB == i and numA != numB:
+            amicableSet.add(i)
+            amicableSet.add(numB)
+
+    return sum(amicableSet)
