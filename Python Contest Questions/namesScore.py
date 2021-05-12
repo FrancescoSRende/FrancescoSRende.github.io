@@ -5,9 +5,9 @@ def namesScore():
     for lines in file:
         names = lines.replace("\"","").split(",")
 
-        # names = file.read()
-        # names = names.replace('"',"")
-        # names = names.split(",")
+    # names = file.read()
+    # names = names.replace('"',"")
+    # names = names.split(",")
         names.sort()
 
     # letterValues = {
