@@ -1,0 +1,596 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>UCC Music Theory Companion</title>
+
+    <style>
+        nav .badge{
+
+            position: relative;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="container">
+        <h1 class="col l1 offset-l4">UCC Music Theory</h1>
+        <h1 class="col s12"></h1>
+        <h1 class="col s12"></h1>
+        <h1 class="col s12"></h1>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Login Modal Structure -->
+    <div>
+        <a href="#login-modal" id="login-nav" class="modal-trigger blue darken-1 btn">Login</a>
+    </div>
+
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <form id="login-form" autocomplete="off">
+                <div class="input-field">
+                    <input type="text" id="user_email" autocomplete="" required/>
+                    <label for="user_email">Enter email</label>
+                </div>
+
+                <div class="input-field">
+                    <input type="password" id="user_password" autocomplete="" required/>
+                    <label for="user_password">Enter password</label>
+                </div>
+
+                <button class="btn teal darken-2 z-depth-0">Sign In</button>
+
+                
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Sign Up Modal Structure -->
+    <div>
+        <a href="#signup-modal" id="newUserBTN" class="modal-trigger blue darken-1 btn">Create New User</a>
+    </div>
+    <!--  you may need to insert 'modal-close' above^^^^   -->
+
+
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <form id="signup-form" autocomplete="off">
+                <div class="input-field">
+                    <input type="text" id="new_email" autocomplete="" required/>
+                    <label for="new_email">Email address</label>
+                </div>
+
+                <div class="input-field">
+                    <input type="password" id="new_password" autocomplete="" required/>
+                    <label for="new_password">Password</label>
+                </div>
+
+                <button class="btn teal darken-2 z-depth-0">Create Account</button>
+
+                
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            options = {dismissible: false}
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems, options);
+        });
+
+    </script>
+
+
+
+
+
+
+
+
+    <script>
+        activeuser = null
+    </script>
+
+
+
+
+
+
+    <!-- script that contains sample user info -->
+    <script>
+        users = [
+            {
+                "email": "francesco.rende@ucc.on.ca",
+                "password": "farnesco",
+                "admin": true
+            },
+            {
+                "email": "psmith@ucc.on.ca",
+                "password": "comrade",
+                "admin": true
+            },
+            {
+                "email": "stephen.stack@ucc.on.ca",
+                "password": "stephen",
+                "admin": false
+            }
+        ]
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- fake login -->
+    <script>
+
+        const login_form = document.getElementById("login-form")
+
+        login_form.addEventListener("submit", (e) => {
+
+            e.preventDefault()
+
+            attemptEmail = login_form["user_email"].value
+            attemptPword = login_form["user_password"].value
+
+
+            for (let i = 0; i < users.length; i++) {
+                if (users[i]["email"] = attemptEmail) {
+                    if (users[i]["password"] = attemptPword) {
+                        
+                    }
+                }
+            }
+
+
+
+            // console.log(data)
+            // logout_nav.style.display = "block"
+            // photos_nav.style.display = "block"
+            // services_nav.style.display = "block"
+            // contact_nav.style.display = "block"
+            // photos.style.display = "block"
+            // songs.style.display = "block"
+            // parallax.style.display = "block"
+            // parallax2.style.display = "block"
+            // services.style.display = "block"
+            // contact.style.display = "block"
+            // footer.style.display = "block"
+
+            // login_nav.style.display = "none"
+
+
+            const modal = document.querySelector("#login-modal")
+            M.Modal.getInstance(modal).close();
+
+
+
+        });
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- fake sign up -->
+<script>
+
+    const sign_up_form = document.getElementById("signup-form")
+
+    sign_up_form.addEventListener("submit", (e) => {
+
+        e.preventDefault()
+
+        newEmail = sign_up_form["new_email"].value
+        newPword = sign_up_form["new_password"].value
+
+    check = 0
+
+        for (let i = 0; i < users.length; i++) {
+            if (users[i]["email"] = attemptEmail) {
+                check = check + 1
+            }
+        }
+
+
+        if (check = 0) {
+            add it to the users
+        }
+
+
+
+        console.log(data)
+        logout_nav.style.display = "block"
+        photos_nav.style.display = "block"
+        services_nav.style.display = "block"
+        contact_nav.style.display = "block"
+        photos.style.display = "block"
+        songs.style.display = "block"
+        parallax.style.display = "block"
+        parallax2.style.display = "block"
+        services.style.display = "block"
+        contact.style.display = "block"
+        footer.style.display = "block"
+
+        login_nav.style.display = "none"
+
+
+        const modal = document.querySelector("#signup-modal")
+        M.Modal.getInstance(modal).close();
+
+
+
+    });
+
+
+
+
+</script>
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+
+
+        var firebaseConfig = {
+            apiKey: "AIzaSyA7dHGzsBTcX7MDqsCbso6_uYP1G9fQ5eo",
+            authDomain: "materializefakeauthentication.firebaseapp.com",
+            projectId: "materializefakeauthentication",
+            storageBucket: "materializefakeauthentication.appspot.com",
+            messagingSenderId: "956139276344",
+            appId: "1:956139276344:web:7671551afc47de8ddb3ecd"
+        };
+        firebase.initializeApp(firebaseConfig);
+        database = firebase.database();
+    
+    
+        
+    
+    
+    
+        var userInfo =  [
+                            { 
+                                "username": "RendevousTM",
+                                "password": "password"
+                            },
+                            { 
+                                "username": "someoneElse",
+                                "password": "something"
+                            }
+                        ]
+                
+    
+        //This generates a Promise - Process in web-development which is generated when a task is
+        //being done that takes time
+    
+        //you can store the promise in a variable (x) and then access it later on
+        x = database.ref().set({
+            userInfo
+          })
+    
+        //the above '.then' runs right after the initial promise is set, but as a result
+        //it prints 'result' before result has a value (before it is defined)
+    
+        // x = database.ref().set({
+           // 	users
+          // })
+    
+    
+        //this code accesses the database, then the instance function 'once' accesses the
+        //database and accesses its values, *then* returns those values in the variable
+        //'snapshot'
+        //snapshot is then logged to the console
+    
+        //'once' will pull the data once and only once
+        //'on' pulls the data when the page is loaded and then listens for changes in the
+        //database
+    
+        //this x is a variable containing a promise from above
+          console.log(x)
+    
+        //this '.then', since it is being used in a separate block of code from the initial
+        //use of the promise variable x, only runs once the promise has been fulfilled
+        //(only once the database has been set and can return something)
+          x.then((val) => {
+              console.log("Database updated!")
+    
+              
+              firebase.database().ref().once('value').then((snapshot) => {
+                  console.log(snapshot.val())
+    
+              });
+          });
+    
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+    var userData = []
+
+
+
+    var data = []
+    var emails = []
+    var pwords = []
+
+    // userDataDB = database.ref('/userInfo/').on('value',(snapshot) => {
+    //     dataSTR = ""
+    //     data = snapshot.val()
+    //     console.log(data)
+
+    //     // for each loop
+    //     for (key in data) {
+    //         emails.push(data[key]['username'])
+    //         pwords.push(data[key]['password'])
+    //     }
+
+    //     console.log(emails)
+
+        
+            
+    // });
+
+    
+
+    const sign_up_form = document.getElementById("signup-form")
+
+    sign_up_form.addEventListener("submit", (e) => {
+
+        e.preventDefault()
+
+        newEmail = sign_up_form["new_email"].value
+        newPword = sign_up_form["new_password"].value
+
+
+
+        var postData = {
+            email: newEmail,
+            password: newPword
+        }
+
+        var newPostKey = firebase.database().ref().child('userInfo').push().key;
+
+        var updates = {};
+
+        updates['userInfo/' + newPostKey] = postData;
+
+        x = firebase.database().ref().update(updates);
+
+
+
+        console.log(data)
+        logout_nav.style.display = "block"
+        photos_nav.style.display = "block"
+        services_nav.style.display = "block"
+        contact_nav.style.display = "block"
+        photos.style.display = "block"
+        songs.style.display = "block"
+        parallax.style.display = "block"
+        parallax2.style.display = "block"
+        services.style.display = "block"
+        contact.style.display = "block"
+        footer.style.display = "block"
+
+        login_nav.style.display = "none"
+
+
+        const modal = document.querySelector("#signup-modal")
+        M.Modal.getInstance(modal).close();
+
+
+
+    });
+
+
+
+    const login_form = document.getElementById("login-form")
+
+    login_form.addEventListener("submit", (e) => {
+
+        e.preventDefault()
+
+        attemptEmail = sign_up_form["user_email"].value
+        attemptPword = sign_up_form["user_password"].value
+
+
+
+        var postData = {
+            username: newUname,
+            password: newPword
+        }
+
+        var newPostKey = firebase.database().ref().child('userInfo').push().key;
+
+        var updates = {};
+
+        updates['userInfo/' + newPostKey] = postData;
+
+        x = firebase.database().ref().update(updates);
+
+
+
+        console.log(data)
+        logout_nav.style.display = "block"
+        photos_nav.style.display = "block"
+        services_nav.style.display = "block"
+        contact_nav.style.display = "block"
+        photos.style.display = "block"
+        songs.style.display = "block"
+        parallax.style.display = "block"
+        parallax2.style.display = "block"
+        services.style.display = "block"
+        contact.style.display = "block"
+        footer.style.display = "block"
+
+        login_nav.style.display = "none"
+
+
+        const modal = document.querySelector("#signup-modal")
+        M.Modal.getInstance(modal).close();
+
+
+
+    });
+
+
+</script>
+
+
+</body>
+</html>
