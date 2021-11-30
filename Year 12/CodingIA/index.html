@@ -56,7 +56,7 @@
 
     <div id="login-modal" class="modal">
         <div class="modal-content">
-            <form id="login-form" autocomplete="off">
+            <form id="loginForm" autocomplete="off">
                 <div class="input-field">
                     <input type="text" id="user_email" autocomplete="" required/>
                     <label for="user_email">Enter email</label>
@@ -99,7 +99,7 @@
 
     <div id="signup-modal" class="modal">
         <div class="modal-content">
-            <form id="signup-form" autocomplete="off">
+            <form id="signUpForm" autocomplete="off">
                 <div class="input-field">
                     <input type="text" id="new_email" autocomplete="" required/>
                     <label for="new_email">Email address</label>
@@ -170,8 +170,8 @@
 
 
     <!-- Logout -->
-    <div>
-        <a href="#" id="logout_btn" style = "display: none" class="modal-trigger blue darken-1 btn">Logout</a>
+    <div class = "container">
+        <a href="#" id="logoutBTN" style = "display: none" class="modal-trigger blue darken-1 btn">Logout</a>
     </div>
 
 
@@ -192,11 +192,46 @@
 
 
 <!-- Song submission form -->
-    <div class="container" id="songSubmissionForm">
+
+    <div class = "row">
+        <a href="#song-modal" style = "display: none" id="songBTN" class="modal-trigger blue darken-1 btn">Suggest a Song</a>
+    </div>
+
+
+    <div id="song-modal" class="modal">
         <h2>Song Submission</h2>
-        <div class="input-field">
-            <input type="text" id="new_email" autocomplete="" required/>
-            <label for="new_email">Email address</label>
+        <div class="modal-content">
+            <form id="songForm" autocomplete="off">
+
+                <div class="input-field">
+                    <input type="text" id="song_title" autocomplete="" required/>
+                    <label for="song_title">Enter song title</label>
+                </div>
+
+                <div class="input-field">
+                    <input type="text" id="band_name" autocomplete="" required/>
+                    <label for="band_name">Enter band name</label>
+                </div>
+
+                <div class="input-field">
+                    <input type="text" id="genre" autocomplete="" required/>
+                    <label for="genre">Enter genre</label>
+                </div>
+
+                <!-- <div class="input-field">
+                    <input type="text" id="URL" autocomplete="" required/>
+                    <label for="URL">Enter URL</label>
+                </div> -->
+
+                <!-- <div class="input-field">
+                    <input type="text" id="user_email" autocomplete="" required/>
+                    <label for="user_email">Enter your email</label>
+                </div> -->
+
+                <button class="btn teal darken-2 z-depth-0">Submit Suggestion</button>
+
+                
+            </form>
         </div>
     </div>
 
@@ -219,10 +254,10 @@
 
 
     <!-- Videos -->
-    <div class = "row">
-        <h2>Alternative</h2>
+    <!-- <div class = "row">
+        <h2 class = "col s12 m12 l12">Alternative</h2> -->
         <!-- make sure you get the videos by clicking 'embed' on YouTube -->
-        <div class = "col s12 m6 l6">
+        <!-- <div class = "col s12 m6 l6">
             <div class="video-container">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/4b8ZfLKxoRE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
@@ -233,7 +268,7 @@
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/G3m71VBgRyM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 
@@ -251,8 +286,12 @@
 
 
 
-    <div class="container">
-        <h2>Alternative</h2>
+
+
+
+    <!-- Card -->
+    <!-- <div class="container">
+        <h2 class = "col s12 m12 l6 center-align">Alternative</h2>
 
         <div class="row">
 
@@ -262,11 +301,13 @@
                     <div class="card-image">
                         <div class="video-container">
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/4b8ZfLKxoRE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
+                        </div> -->
+
                         <!-- <a href="#" class="halfway-fab btn-floating pink pulse">
                             <i class="material-icons">favorite</i>
                         </a> -->
-                    </div>
+
+                    <!-- </div>
                     <div class="card-content">
                         <span class="card-title">Glassjaw - Ape Dos Mil</span>
                         <p>Ashes of the Wake, Sacrament, As the Palaces Burn, Lamb of God (self-titled)</p>
@@ -284,6 +325,84 @@
             </div>
 
         </div>
+    </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- add a button visible to admins only that makes all non-approved songs visible -->
+<!-- the songs are in cards so the admins can approve or deny them -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- empty card display area -->
+    <div class = "container">
+        <div class = "row" style = "display: none" id = "cardDisplay">
+
+        </div>
     </div>
 
 
@@ -303,17 +422,128 @@
 
 
 
-    <!-- Descriptions -->
-    <div class = "row">
-        
-        <div class = "col s12 m6 l6">
-            <b>Glassjaw - Ape Dos Mil</b>
-        </div>
 
-        <div class = "col s12 m6 l6">
-            <b>Queens of the Stone Age - Go With The Flow</b>
-        </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- button to let admins view suggested songs -->
+    <div class = "container">
+        <a href="#" style = "display: none" id="adminSugBTN" class="modal-trigger blue darken-1 btn">View Suggestions</a>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- button for admins to create song cards -->
+<!-- TEMPORARY FIX, HOPEFULLY -->
+
+<div class = "row">
+    <a href="#create-card-modal" style = "display: none" id="createCardBTN" class="modal-trigger blue darken-1 btn">Create a Song Card</a>
+</div>
+
+
+<div id="create-card-modal" class="modal">
+    <h2>Song Card Creation</h2>
+    <div class="modal-content">
+        <form id="createCardForm" autocomplete="off">
+
+            <div class="input-field">
+                <input type="text" id="create_song_title" autocomplete="" required/>
+                <label for="song_title">Enter song title</label>
+            </div>
+
+            <div class="input-field">
+                <input type="text" id="create_band_name" autocomplete="" required/>
+                <label for="band_name">Enter band name</label>
+            </div>
+
+            <div class="input-field">
+                <input type="text" id="create_genre" autocomplete="" required/>
+                <label for="genre">Enter genre</label>
+            </div>
+
+            <!-- <div class="input-field">
+                <input type="text" id="URL" autocomplete="" required/>
+                <label for="URL">Enter URL</label>
+            </div> -->
+
+            <!-- <div class="input-field">
+                <input type="text" id="user_email" autocomplete="" required/>
+                <label for="user_email">Enter your email</label>
+            </div> -->
+
+            <button class="btn teal darken-2 z-depth-0">Submit Suggestion</button>
+
+            
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- empty card display area for suggestions -->
+<div class = "container">
+    <div class = "row" style = "display: none" id = "sugDisplay">
+        <h2>Suggestions</h2>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
