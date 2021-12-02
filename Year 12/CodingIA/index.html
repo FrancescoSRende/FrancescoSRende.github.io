@@ -21,14 +21,53 @@
             top: 20px;
             right: 20px;
         }
+
+
+
+
+
+
+        .p1 {
+            font-family: "Times New Roman", Times, serif;
+        }
+
+
+
+
+
     </style>
 </head>
 
 
 <body>
 
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Title -->
     <div class = "row container">
-            <h1 class="col l12 center-align">UCC Music Theory</h1>
+            <h1 class="col l12 center-align p1">UCC Music Theory</h1>
             <h1 class="col s12"></h1>
     </div>
 
@@ -48,9 +87,71 @@
 
 
 
+
+
+
+    <!-- Sidenav -->
+
+
+    <ul id="slide-out" class="sidenav">
+        <h3 class = "center-align">Genres</h3>
+        <!-- <li><a href="#!"><i class="material-icons">cloud</i>Rock</a></li> -->
+        <!-- <li><a href="#!">Rock</a></li> -->
+
+
+        <!-- Dropdown Trigger -->
+        <div class = "container">
+            <a class='dropdown-trigger btn center-align' href='#' data-target='dropdown1'>Rock</a>
+
+            <!-- Dropdown Structure -->
+            <ul id='dropdown1' class='dropdown-content'>
+                <li class = "waves-effect" id = "alternativeBTN"><a href="#!">Alternative</a></li>
+                <li class="divider" tabindex="-1"></li>
+                <li class = "waves-effect"><a href="#!">Metal</a></li>
+                
+                <!-- <li><a href="#!"><i class="material-icons">view_module</i>four</a></li> -->
+                <!-- <li><a href="#!"><i class="material-icons">cloud</i>five</a></li> -->
+            </ul>
+        </div>
+
+
+        <li><a href="#!">Jazz</a></li>
+
+
+        <li><div class="divider"></div></li>
+        <h3 class = "center-align">Concepts</h3>
+        <li><a href="#!">Harmony</a></li>
+
+        <li><a class="subheader">Subheader</a></li>
+        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+        <div class = "col l2 m2 s2 center-align">
+            <a href="#" id="logoutBTN" class="modal-trigger blue darken-1 btn">Logout</a>
+        </div>
+    </ul>
+    <a href="#" id="sidenavBTN" data-target="slide-out" style="display: none" class="sidenav-trigger btn-large"><i class="material-icons">menu</i></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- Login Modal Structure -->
-    <div class = "row">
-        <a href="#login-modal" id="loginBTN" class="modal-trigger blue darken-1 btn">Login</a>
+    <div class = "row center-align">
+        <a href="#login-modal" id="loginBTN" class="modal-trigger blue darken-1 btn-large">Login</a>
     </div>
 
 
@@ -91,8 +192,8 @@
 
 
     <!-- Sign Up Modal Structure -->
-    <div>
-        <a href="#signup-modal" id="newUserBTN" class="modal-trigger blue darken-1 btn">Create New User</a>
+    <div class = "row center-align">
+        <a href="#signup-modal" id="newUserBTN" class="modal-trigger blue darken-1 btn-large">Create New User</a>
     </div>
     <!--  you may need to insert 'modal-close' above^^^^   -->
 
@@ -131,48 +232,57 @@
 
 
 
-    <!-- Sidenav -->
 
 
-    <ul id="slide-out" class="sidenav fixed">
-        <li><div class="user-view">
-            <div class="background">
-                <!-- <img src="images/office.jpg"> -->
+
+
+
+
+<!-- button for admins to create song cards -->
+<!-- TEMPORARY FIX, HOPEFULLY -->
+
+<div class = "row center-align">
+    <a href="#create-card-modal" style = "display: none" id="createCardBTN" class="modal-trigger blue darken-1 btn-large">Create a Song Card</a>
+</div>
+
+
+<div id="create-card-modal" class="modal">
+    <h2>Song Card Creation</h2>
+    <div class="modal-content">
+        <form id="createCardForm" autocomplete="off">
+
+            <div class="input-field">
+                <input type="text" id="create_song_title" autocomplete="" required/>
+                <label for="create_song_title">Enter song title</label>
             </div>
-            <!-- <a href="#user"><img class="circle" src="images/yuna.jpg"></a> -->
-            <a href="#name"><span class="white-text name">John Doe</span></a>
-            <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-        </div></li>
-        <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-        <li><a href="#!">Second Link</a></li>
-        <li><div class="divider"></div></li>
-        <li><a class="subheader">Subheader</a></li>
-        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-    </ul>
-    <!-- <a href="#" id = "sidenavTrigger" data-target="slide-out" class="sidenav-trigger" style = "display: none"><i class="material-icons">menu</i></a> -->
 
+            <div class="input-field">
+                <input type="text" id="create_band_name" autocomplete="" required/>
+                <label for="create_band_name">Enter band name</label>
+            </div>
 
+            <!-- GET DROPDOWN MENU FOR SUB GENRES!!! -->
+            <div class="input-field">
+                <input type="text" id="create_genre" autocomplete="" required/>
+                <label for="create_genre">Enter genre</label>
+            </div>
 
+            <div class="input-field">
+                <input type="text" id="create_desc" autocomplete="" required/>
+                <label for="create_desc">Enter description of the music theory</label>
+            </div>
 
+            <!-- <div class="input-field">
+                <input type="text" id="user_email" autocomplete="" required/>
+                <label for="user_email">Enter your email</label>
+            </div> -->
 
+            <button class="btn teal darken-2 z-depth-0">Submit Suggestion</button>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Logout -->
-    <div class = "container">
-        <a href="#" id="logoutBTN" style = "display: none" class="modal-trigger blue darken-1 btn">Logout</a>
+            
+        </form>
     </div>
+</div>
 
 
 
@@ -190,14 +300,41 @@
 
 
 
-
-<!-- Song submission form -->
 
     <div class = "row">
-        <a href="#song-modal" style = "display: none" id="songBTN" class="modal-trigger blue darken-1 btn">Suggest a Song</a>
+        <!-- Song submission button -->
+        <div class = "col s6 center-align">
+            <a href="#song-modal" style = "display: none" id="songBTN" class="modal-trigger blue darken-1 btn-large">Suggest a Song</a>
+        </div>
+
+
+
+        <!-- button to let admins view suggested songs -->
+        <div class = "col s6 center-align">
+            <a href="#" style = "display: none" id="adminSugBTN" class="blue darken-1 btn-large">View Suggestions</a>
+        </div>
     </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Song submission form -->
     <div id="song-modal" class="modal">
         <h2>Song Submission</h2>
         <div class="modal-content">
@@ -217,11 +354,12 @@
                     <input type="text" id="genre" autocomplete="" required/>
                     <label for="genre">Enter genre</label>
                 </div>
+                <!-- GET DROPDOWN MENU FOR SUB GENRES!!! -->
 
-                <!-- <div class="input-field">
-                    <input type="text" id="URL" autocomplete="" required/>
-                    <label for="URL">Enter URL</label>
-                </div> -->
+                <div class="input-field">
+                    <input type="text" id="desc" autocomplete="" required/>
+                    <label for="desc">Enter description of the music theory</label>
+                </div>
 
                 <!-- <div class="input-field">
                     <input type="text" id="user_email" autocomplete="" required/>
@@ -399,9 +537,12 @@
 
 
 <!-- empty card display area -->
-    <div class = "container">
-        <div class = "row" style = "display: none" id = "cardDisplay">
-
+    <div class = "row">
+        <div class = "container col s6" style = "display: none" id = "cardDisplay">
+        </div>
+<!-- empty card display area for suggestions -->
+        <div class = "container col s6" style = "display: none" id = "sugDisplay">
+            <h2>Suggestions</h2>
         </div>
     </div>
 
@@ -409,121 +550,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- button to let admins view suggested songs -->
-    <div class = "container">
-        <a href="#" style = "display: none" id="adminSugBTN" class="modal-trigger blue darken-1 btn">View Suggestions</a>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- button for admins to create song cards -->
-<!-- TEMPORARY FIX, HOPEFULLY -->
-
-<div class = "row">
-    <a href="#create-card-modal" style = "display: none" id="createCardBTN" class="modal-trigger blue darken-1 btn">Create a Song Card</a>
-</div>
-
-
-<div id="create-card-modal" class="modal">
-    <h2>Song Card Creation</h2>
-    <div class="modal-content">
-        <form id="createCardForm" autocomplete="off">
-
-            <div class="input-field">
-                <input type="text" id="create_song_title" autocomplete="" required/>
-                <label for="song_title">Enter song title</label>
-            </div>
-
-            <div class="input-field">
-                <input type="text" id="create_band_name" autocomplete="" required/>
-                <label for="band_name">Enter band name</label>
-            </div>
-
-            <div class="input-field">
-                <input type="text" id="create_genre" autocomplete="" required/>
-                <label for="genre">Enter genre</label>
-            </div>
-
-            <!-- <div class="input-field">
-                <input type="text" id="URL" autocomplete="" required/>
-                <label for="URL">Enter URL</label>
-            </div> -->
-
-            <!-- <div class="input-field">
-                <input type="text" id="user_email" autocomplete="" required/>
-                <label for="user_email">Enter your email</label>
-            </div> -->
-
-            <button class="btn teal darken-2 z-depth-0">Submit Suggestion</button>
-
-            
-        </form>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- empty card display area for suggestions -->
-<div class = "container">
-    <div class = "row" style = "display: none" id = "sugDisplay">
-        <h2>Suggestions</h2>
-    </div>
-</div>
 
 
 
