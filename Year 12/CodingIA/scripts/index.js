@@ -107,8 +107,11 @@ const genreDisplay = document.getElementById("genreDisplay")
 
 const sidenavBTN = document.getElementById("sidenavBTN")
 
-// const CHANGETHISBUTGENRE = document.getElementById("CHANGETHISBUTGENRE")
+const adminSymbol = document.getElementById("adminSymbol")
 
+const CHANGETHISBUTGENRE = document.getElementById("CHANGETHISBUTGENRE")
+
+const dropdownRock = document.getElementById("dropdownRock")
 
 
 
@@ -239,6 +242,9 @@ loginForm.addEventListener("submit", (e) => {
                     adminSugBTN.style.display = "inline-block"
                     createCardBTN.style.display = "inline-block"
                     resetBTN.style.display = "inline-block"
+                    adminSymbol.style.display = "block"
+                    changeBTN.style.display = "none"
+                    songBTN.style.display = "none"
                 }
                 break
             } else {
@@ -560,6 +566,7 @@ logoutBTN.addEventListener("click", (e) => {
     sidenavBTN.style.display = "none"
     resetBTN.style.display = "none"
     changeBTN.style.display = "none"
+    adminSymbol.style.display = "none"
 
     newUserBTN.style.display = "inline-block"
     loginBTN.style.display = "inline-block"
@@ -682,10 +689,9 @@ accNums = []
                                         <span class="card-title">${band} - ${title}</span>
                                         <p>Concept: ${concepts}</p>
                                         <p>${description}</p>
-                                        <p class='card-text hide' id='${title}Hidden' style='display: none'>AAAAAAAAAAA</p>
                                     </div>
                                     <div class="card-action">
-                                        <a id='${title}HiddenBTN' href="#">See More</a>
+                                        <a href="https://en.wikipedia.org/wiki/Lamb_of_God_(band)">More Details</a>
                                         <a href="https://www.youtube.com/watch?v=HL9kaJZw8iw&ab_channel=lambofgodVEVO">Laid to Rest</a>
                                     </div>
                                 </div>
@@ -1583,29 +1589,33 @@ createCardForm.addEventListener("submit", (e) => {
 // });
   
 
-//   function genDropDown() {
-//     console.log("TEST")
- 
-//     // const dropdown = document.getElementById("dropdown1")
+//     function genDropDown() {
+//         console.log("TEST")
+    
+//         // const dropdown = document.getElementById("dropdown1")
 
-//     for (key in genreListFB) {
+//         for (key in genreListFB) {
 
-//         var newli = document.createElement("li");
-//         var newa = document.createElement("a")
-//         newa.innerHTML = key;
-//         newli.appendChild(newa);
-//         CHANGETHISBUTGENRE.appendChild(newli);
+//             var newli = document.createElement("li");
+//             var newa = document.createElement("a")
+//             newa.innerHTML = key;
+//             newli.appendChild(newa);
+//             CHANGETHISBUTGENRE.appendChild(newli);
+//             dropdownRock.appendChild(newli);
+//             console.log(key)
 
 
-//       for (key2 in genreListFB[key]) {
+//             for (key2 in genreListFB[key]) {
 
-//         var newli = document.createElement("li");
-//         var newa = document.createElement("a")
-//         newa.innerHTML = genreListFB[key][key2];
-//         newli.appendChild(newa);
-//         CHANGETHISBUTGENRE.appendChild(newli);
+//                 var newli = document.createElement("li");
+//                 var newa = document.createElement("a")
+//                 newa.innerHTML = genreListFB[key][key2];
+//                 newli.appendChild(newa);
+//                 CHANGETHISBUTGENRE.appendChild(newli);
+//                 dropdownRock.appendChild(newli);
+//                 console.log(key2)
 
-//       }
+//             }
+//         }
+
 //     }
-
-//   }
