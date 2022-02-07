@@ -682,9 +682,10 @@ accNums = []
                                         <span class="card-title">${band} - ${title}</span>
                                         <p>Concept: ${concepts}</p>
                                         <p>${description}</p>
+                                        <p class='card-text hide' id='${title}Hidden' style='display: none'>AAAAAAAAAAA</p>
                                     </div>
                                     <div class="card-action">
-                                        <a href="https://en.wikipedia.org/wiki/Lamb_of_God_(band)">More Details</a>
+                                        <a id='${title}HiddenBTN' href="#">See More</a>
                                         <a href="https://www.youtube.com/watch?v=HL9kaJZw8iw&ab_channel=lambofgodVEVO">Laid to Rest</a>
                                     </div>
                                 </div>
