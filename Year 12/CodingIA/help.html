@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>help</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <!-- <a href="#" id="sidenavBTN" data-target="slide-out" style="background-color: #00467f" class="sidenav-trigger btn-large"><i class="material-icons">menu</i></a>
+    <ul id="slide-out" class="sidenav fixed">
+        <h3 class = "center-align">Genres</h3> -->
+        <!-- Dropdown Trigger -->
+        <!-- <div class = "container center-align"> -->
+            <!--  style="margin-bottom: 400px" ?? -->
+            <!-- <a class='dropdown-trigger btn center-align' style="background-color: #00467f" href='#' data-target='dropdownHarmony'>Harmony</a> -->
+
+            <!-- Dropdown Structure -->
+            <!-- <ul id='dropdownHarmony' class='dropdown-content' style="width: 400px; display: inline-block">
+                <li style="width: 400px" class = "waves-effect" id = "chromaticBTN"><a href="#!">Chromaticism</a></li>
+                <li class="divider" tabindex="-1"></li>
+                <li class = "waves-effect"><a href="#!">another concept</a></li>
+                <li class="divider" tabindex="-1"></li>
+                <li class = "waves-effect" id = "noiseBTN"><a href="#!">Noise</a></li>
+                <li class="divider" tabindex="-1"></li>
+                <li style="height: 100px" class = "waves-effect" id = "twoFiveBTN"><a href="#!">Two-Five Progression</a></li>
+                <li class="divider" tabindex="-1"></li>
+                <li class = "waves-effect" id = "modalInterchangeBTN"><a href="#!">Modal Interchange</a></li>
+            </ul>
+        </div>
+    </ul> -->
+
+
+
+
+
+    <ul id="slide-out2" class="sidenav">
+
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    
+
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <ul id='dropdown1' class='dropdown-content'>
+                        <li><a href="#!">First</a></li>
+                        <li><a href="#!">Second</a></li>
+                        <li><a href="#!">Third</a></li>
+                        <li><a href="#!">Fourth</a></li>
+                    </ul>
+
+                    
+                    
+                    
+                </li>
+            </ul>
+        </li>
+    </ul>
+    
+      <a href="#" data-target="slide-out2" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    optionsSidenav = {}
+    var elemsSidenav = document.querySelectorAll('.sidenav');
+    var instancesSidenav = M.Sidenav.init(elemsSidenav, optionsSidenav);
+
+    optionsDropdown = {}
+    var elemsDropdown = document.querySelectorAll('.dropdown-trigger');
+    var instancesDropdown = M.Dropdown.init(elemsDropdown, optionsDropdown);
+    
+    optionsSelect = {}
+    var elemsSelect = document.querySelectorAll('select');
+    var instancesSelect = M.FormSelect.init(elemsSelect, optionsSelect);
+});
+
+// jQuery(document).ready(function($){
+// $(".button-collapse").sideNav({
+// 		menuWidth: 275
+// 	});
+// 	$('.collapsible').collapsible();
+//  });
+
+    </script>
+</body>
+</html>

@@ -1,3 +1,26 @@
+<!-- Maybe you should allow students to suggest new genres -->
+<!--  - perhaps change numbering system
+      - instead of using 1,2,3,...9 use time stamps? will still be ordered
+      - maybe change buttons to dropdown/slash indicate that it is one
+      - materialize select
+      - maybe add some colour to background? when loaded its a little sparse,
+      especially the front
+      - from a loading stand point perhaps have to separate trees for waiting for
+      approval and ready to show -->
+<!-- - Start working on the front end so your website has a clear structure.
+     - Try to get rid of all errors in the console it will be easier to troubleshoot
+     problems.
+     - I didn't see your code so I can't give you any feedback on the structure of the
+     code.
+     - Add a button to add genres. -->
+<!-- - I know you've been focusing on the backend stuff (all of that is very
+     impressive, great for algorithmic thinking, abstraction, data storage as topics
+     for crit C) but the major thing I noticed was just the lack of focus on front end
+     - Maybe a description popup or page that just lets students know what they are
+     doing on the site, what rules/directions there are for submitting music requests,
+     etc.-->
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -41,7 +64,8 @@
 
 <body>
 
-    
+<!-- UCC colour scheme:
+     BLUE: #00467f -->
     
 
 
@@ -67,10 +91,13 @@
 
     <!-- Title -->
     <div class = "row container">
-            <h1 class="col l12 center-align p1">UCC Music Theory</h1>
-            <h1 class="col s12"></h1>
+        <h1 class="col l12 center-align p1">UCC Music Theory</h1>
     </div>
 
+
+    <div class = "row container">
+        <img src="ucc.jpeg" alt="HTML5 Icon" style="display: block; margin-left: auto; margin-right: auto; padding-bottom: 20px">
+    </div>
 
 
 
@@ -92,43 +119,53 @@
 
     <!-- Sidenav -->
 
-
     <ul id="slide-out" class="sidenav">
+
         <h3 class = "center-align">Genres</h3>
-        <!-- <li><a href="#!"><i class="material-icons">cloud</i>Rock</a></li> -->
-        <!-- <li><a href="#!">Rock</a></li> -->
 
 
-        <!-- Dropdown Trigger -->
-        <div class = "container">
-            <a class='dropdown-trigger btn center-align' href='#' data-target='dropdown1'>Rock</a>
-
-            <!-- Dropdown Structure -->
-            <ul id='dropdown1' class='dropdown-content'>
-                <li class = "waves-effect" id = "alternativeBTN"><a href="#!">Alternative</a></li>
-                <li class="divider" tabindex="-1"></li>
-                <li class = "waves-effect"><a href="#!">Metal</a></li>
-                
-                <!-- <li><a href="#!"><i class="material-icons">view_module</i>four</a></li> -->
-                <!-- <li><a href="#!"><i class="material-icons">cloud</i>five</a></li> -->
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdownRock">Rock<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <ul id='dropdownRock' class='dropdown-content'>
+                        <li id = "alternativeBTN"><a href="#!">Alternative</a></li>
+                        <li id = "metalBTN"><a href="#!">Metal</a></li>
+                        <li id = "hardcoreBTN"><a href="#!">Hardcore/Metalcore</a></li>
+                    </ul>
+                </li>
             </ul>
-        </div>
-
-
-        <li><a href="#!">Jazz</a></li>
-
-
-        <li><div class="divider"></div></li>
+        </li>
+                
         <h3 class = "center-align">Concepts</h3>
-        <li><a href="#!">Harmony</a></li>
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdownHarmony">Harmony<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <ul id='dropdownHarmony' class='dropdown-content'>
+                        <li id = "chromaticBTN"><a href="#!">Chromaticism</a></li>
+                        <li id = "noiseBTN"><a href="#!">Noise</a></li>
+                        <li id = "twoFiveBTN"><a href="#!">Two-Five Progression</a></li>
+                        <li id = "modalInterchangeBTN"><a href="#!">Modal Interchange</a></li>
+                    </ul>
 
-        <li><a class="subheader">Subheader</a></li>
-        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-        <div class = "col l2 m2 s2 center-align">
-            <a href="#" id="logoutBTN" class="modal-trigger blue darken-1 btn">Logout</a>
-        </div>
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdownRhythm">Rhythm<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <ul id='dropdownRhythm' class='dropdown-content'>
+                        <li id = "fiveFourTimeBTN"><a href="#!">5/4 Time Signature</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <li class="padding">
+            <div class = "col l2 m2 s2 center-align">
+                <a href="#" id="logoutBTN" style="background-color: #00467f" class="modal-trigger btn">Logout</a>
+            </div>
+        </li>
+
     </ul>
-    <a href="#" id="sidenavBTN" data-target="slide-out" style="display: none" class="sidenav-trigger btn-large"><i class="material-icons">menu</i></a>
+    
+    <a href="#" id="sidenavBTN" data-target="slide-out" style="display: none" class="sidenav-trigger"><i class="medium material-icons">search</i></a>
 
 
 
@@ -151,7 +188,7 @@
 
     <!-- Login Modal Structure -->
     <div class = "row center-align">
-        <a href="#login-modal" id="loginBTN" class="modal-trigger blue darken-1 btn-large">Login</a>
+        <a href="#login-modal" id="loginBTN" style="background-color: #00467f" class="modal-trigger btn-large">Login</a>
     </div>
 
 
@@ -168,7 +205,7 @@
                     <label for="user_password">Enter password</label>
                 </div>
 
-                <button class="btn teal darken-2 z-depth-0">Sign In</button>
+                <button style="background-color: #00467f" class="btn z-depth-0">Sign In</button>
 
                 
             </form>
@@ -193,7 +230,7 @@
 
     <!-- Sign Up Modal Structure -->
     <div class = "row center-align">
-        <a href="#signup-modal" id="newUserBTN" class="modal-trigger blue darken-1 btn-large">Create New User</a>
+        <a href="#signup-modal" id="newUserBTN" style="background-color: #00467f" class="modal-trigger btn-large">Create New User</a>
     </div>
     <!--  you may need to insert 'modal-close' above^^^^   -->
 
@@ -211,7 +248,7 @@
                     <label for="new_password">Password</label>
                 </div>
 
-                <button class="btn teal darken-2 z-depth-0">Create Account</button>
+                <button  style="background-color: #00467f" class="btn z-depth-0">Create Account</button>
 
                 
             </form>
@@ -238,46 +275,27 @@
 
 
 
-<!-- button for admins to create song cards -->
-<!-- TEMPORARY FIX, HOPEFULLY -->
-
+<!-- Admin Password Change -->
 <div class = "row center-align">
-    <a href="#create-card-modal" style = "display: none" id="createCardBTN" class="modal-trigger blue darken-1 btn-large">Create a Song Card</a>
+    <a href="#reset-modal" style = "display: none; background-color: #00467f" id="resetBTN" class="modal-trigger btn-large">Reset Password</a>
 </div>
 
 
-<div id="create-card-modal" class="modal">
-    <h2>Song Card Creation</h2>
+<div id="reset-modal" class="modal">
     <div class="modal-content">
-        <form id="createCardForm" autocomplete="off">
+        <form id="resetForm" autocomplete="off">
 
             <div class="input-field">
-                <input type="text" id="create_song_title" autocomplete="" required/>
-                <label for="create_song_title">Enter song title</label>
+                <input type="text" id="reset_email" autocomplete="" required/>
+                <label for="reset_email">Who's password do you want to change?</label>
             </div>
 
             <div class="input-field">
-                <input type="text" id="create_band_name" autocomplete="" required/>
-                <label for="create_band_name">Enter band name</label>
+                <input type="password" id="reset_password" autocomplete="" required/>
+                <label for="reset_password">Enter new password</label>
             </div>
 
-            <!-- GET DROPDOWN MENU FOR SUB GENRES!!! -->
-            <div class="input-field">
-                <input type="text" id="create_genre" autocomplete="" required/>
-                <label for="create_genre">Enter genre</label>
-            </div>
-
-            <div class="input-field">
-                <input type="text" id="create_desc" autocomplete="" required/>
-                <label for="create_desc">Enter description of the music theory</label>
-            </div>
-
-            <!-- <div class="input-field">
-                <input type="text" id="user_email" autocomplete="" required/>
-                <label for="user_email">Enter your email</label>
-            </div> -->
-
-            <button class="btn teal darken-2 z-depth-0">Submit Suggestion</button>
+            <button style="background-color: #00467f" class="btn z-depth-0">Reset Password</button>
 
             
         </form>
@@ -301,41 +319,163 @@
 
 
 
+
+
+
+<!-- Non-Admin Password Change -->
+<div class = "row center-align">
+    <a href="#change-modal" style = "display: none; background-color: #00467f" id="changeBTN" class="modal-trigger btn-large">Change Password DOESN'T WORK RIGHT NOW</a>
+</div>
+
+
+<div id="change-modal" class="modal">
+    <div class="modal-content">
+        <form id="changeForm" autocomplete="off">
+
+            <div class="input-field">
+                <input type="text" id="change_email" autocomplete="" required/>
+                <label for="change_email">Enter your email</label>
+            </div>
+
+            <div class="input-field">
+                <input type="password" id="change_old_password" autocomplete="" required/>
+                <label for="change_old_password">Enter your previous password</label>
+            </div>
+
+            <div class="input-field">
+                <input type="password" id="change_new_password" autocomplete="" required/>
+                <label for="change_new_password">Enter new password</label>
+            </div>
+
+            <button style="background-color: #00467f" class="btn z-depth-0">Change Password</button>
+
+            
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- button for admins to create song cards -->
+<!-- TEMPORARY FIX, HOPEFULLY -->
+
+<div class = "row center-align">
+    <a href="#create-card-modal" style = "display: none; background-color: #00467f" id="createCardBTN" class="modal-trigger btn-large">Create a Song Card</a>
+</div>
+
+
+<div id="create-card-modal" class="modal" style="border: 10px solid #FAFAFA">
+    <h2>Song Card Creation</h2>
+    <div class="modal-content">
+        <form id="createCardForm" autocomplete="off">
+
+            <div class="input-field">
+                <input type="text" id="create_song_title" autocomplete="" required/>
+                <label for="create_song_title">Enter song title</label>
+            </div>
+
+            <div class="input-field">
+                <input type="text" id="create_band_name" autocomplete="" required/>
+                <label for="create_band_name">Enter band name</label>
+            </div>
+
+
+            <div class="input-field">
+                <select id="create_genre">
+                    <option value="" disabled selected>Choose the genre</option>
+                    <option value="" disabled>ROCK</option>
+                    <option value="Alternative">Alternative</option>
+                    <option value="Metal">Metal</option>
+                    <option value="Hardcore/Metalcore">Hardcore/Metalcore</option>
+                    <option value="Jazz">JAZZ</option>
+                </select>
+                <label>Enter genre</label>
+            </div>
+
+            <div class="input-field">
+                <select id="create_concepts">
+                    <option value="" disabled selected>Choose the music theory concepts</option>
+                    <option value="" disabled>HARMONY</option>
+                    <option value="chromaticism">Chromaticism</option>
+                    <option value="two-five progression">Two-Five Progression</option>
+                    <option value="noise">Noise</option>
+                    <option value="modal interchange">Modal Interchange</option>
+                    <option value="" disabled>RHYTHM</option>
+                    <option value="5/4 time signature">5/4 Time Signature</option>
+                </select>
+                <label>Enter music theory concepts present in song</label>
+            </div>
+
+            <div class="input-field">
+                <input type="text" id="create_desc" autocomplete="" required/>
+                <label for="create_desc">Enter description of the music theory</label>
+            </div>
+
+            <div class="input-field">
+                <input type="text" id="create_link" autocomplete="" required/>
+                <label for="create_link">Enter YouTube link for song</label>
+            </div>
+
+            <!-- <div class="input-field">
+                <input type="text" id="user_email" autocomplete="" required/>
+                <label for="user_email">Enter your email</label>
+            </div> -->
+
+            <button id="createCardBTN" style="background-color: #00467f" class="btn z-depth-0">Submit New Creation</button>
+
+            
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Song submission button -->
     <div class = "row">
-        <!-- Song submission button -->
         <div class = "col s6 center-align">
-            <a href="#song-modal" style = "display: none" id="songBTN" class="modal-trigger blue darken-1 btn-large">Suggest a Song</a>
+            <a href="#song-modal" style = "display: none; background-color: #00467f" id="songBTN" class="modal-trigger btn-large">Suggest a Song</a>
         </div>
-
-
 
         <!-- button to let admins view suggested songs -->
         <div class = "col s6 center-align">
-            <a href="#" style = "display: none" id="adminSugBTN" class="blue darken-1 btn-large">View Suggestions</a>
+            <a href="#" style = "display: none; background-color: #00467f" id="adminSugBTN" class="btn-large">View Suggestions</a>
         </div>
     </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <!-- Song submission form -->
-    <div id="song-modal" class="modal">
+    <div id="song-modal" class="modal" style="border: 10px solid #FAFAFA">
         <h2>Song Submission</h2>
         <div class="modal-content">
             <form id="songForm" autocomplete="off">
@@ -350,15 +490,40 @@
                     <label for="band_name">Enter band name</label>
                 </div>
 
+
                 <div class="input-field">
-                    <input type="text" id="genre" autocomplete="" required/>
-                    <label for="genre">Enter genre</label>
+                    <select id="genre">
+                        <option value="" disabled selected>Choose the genre</option>
+                        <option value="Alternative">Alternative</option>
+                        <option value="Metal">Metal</option>
+                        <option value="Hardcore/Metalcore">Hardcore/Metalcore</option>
+                        <option value="Jazz">JAZZ</option>
+                    </select>
+                    <label>Enter genre</label>
                 </div>
-                <!-- GET DROPDOWN MENU FOR SUB GENRES!!! -->
+
+                <div class="input-field">
+                    <select id="song_concepts">
+                        <option value="" disabled selected>Choose the music theory concepts</option>
+                        <option value="" disabled>HARMONY</option>
+                        <option value="chromaticism">Chromaticism</option>
+                        <option value="two-five progression">Two-Five Progression</option>
+                        <option value="noise">Noise</option>
+                        <option value="modal interchange">Modal Interchange</option>
+                        <option value="" disabled>RHYTHM</option>
+                        <option value="5/4 time signature">5/4 Time Signature</option>
+                    </select>
+                    <label>Enter music theory concepts present in song</label>
+                </div>
 
                 <div class="input-field">
                     <input type="text" id="desc" autocomplete="" required/>
                     <label for="desc">Enter description of the music theory</label>
+                </div>
+
+                <div class="input-field">
+                    <input type="text" id="song_link" autocomplete="" required/>
+                    <label for="song_link">Enter YouTube link of song</label>
                 </div>
 
                 <!-- <div class="input-field">
@@ -366,13 +531,54 @@
                     <label for="user_email">Enter your email</label>
                 </div> -->
 
-                <button class="btn teal darken-2 z-depth-0">Submit Suggestion</button>
+                <button style="background-color: #00467f" class="btn z-depth-0">Submit Suggestion</button>
 
                 
             </form>
         </div>
     </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- user genre suggestion form -->
+<!-- 
+<div class = "row col-s6 center-align">
+    <a href="#genre-modal" style = "display: inline-block; background-color: #00467f" id="genreFormBTN" class="modal-trigger btn-large">Suggest a New Genre</a>
+</div>
+
+
+<div id="genre-modal" class="modal" style="border: 10px solid #FAFAFA">
+    <h2>New Genre Suggestion</h2>
+    <div class="modal-content">
+        <form id="genreForm" autocomplete="off">
+
+            <div class="input-field">
+                <input type="text" id="new_genre" autocomplete="" required/>
+                <label for="new_genre">Enter suggested genre</label>
+            </div>
+
+            <button id="submitGenreBTN" style="background-color: #00467f" class="btn z-depth-0">Submit Genre Suggestion</button>
+
+            
+        </form>
+    </div>
+</div> -->
 
 
 
@@ -538,21 +744,35 @@
 
 <!-- empty card display area -->
     <div class = "row">
-        <div class = "container col s6" style = "display: none" id = "cardDisplay">
-        </div>
+        <div class = "container col s6" style = "display: none" id = "cardDisplay"></div>
 <!-- empty card display area for suggestions -->
         <div class = "container col s6" style = "display: none" id = "sugDisplay">
             <h2>Suggestions</h2>
         </div>
     </div>
 
+<!-- empty dropdown area -->
+<!-- <div class = "row">
+    <div class = "container col s6" id = "genreDisplay">
+        <div class="input-field">
+            <select>
+                <option value="" disabled selected>Choose the genre</option>
+            </select>
+            <label>Enter genre</label>
+        </div>
+    </div>
+</div>
 
 
+<div class = "container center-align">
+    <a class='dropdown-trigger btn' style="background-color: #00467f" href='#' data-target='CHANGETHISBUTGENRE'>TYFGUHJ</a>
 
 
+    <ul id='CHANGETHISBUTGENRE' class='dropdown-content' style="width: 200px">
+        <li class = "waves-effect disabled"><a href="#!">SLKDHFDJSK</a></li>
 
-
-
+    </ul>
+</div> -->
 
 
 
