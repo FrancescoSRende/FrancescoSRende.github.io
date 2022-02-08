@@ -74,18 +74,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // defining the various elements on the website that I will need to access
-const logoutBTN = document.getElementById("logoutBTN")
-const newUserBTN = document.getElementById("newUserBTN")
 const loginBTN = document.getElementById("loginBTN")
+const newUserBTN = document.getElementById("newUserBTN")
+const logoutBTN = document.getElementById("logoutBTN")
+const deleteAccountBTN = document.getElementById("deleteAccountBTN")
+
 const songBTN = document.getElementById("songBTN")
 const adminSugBTN = document.getElementById("adminSugBTN")
 const createCardBTN = document.getElementById("createCardBTN")
 const resetBTN = document.getElementById("resetBTN")
 const changeBTN = document.getElementById("changeBTN")
 
-const alternativeBTN = document.getElementById("alternativeBTN")
-const metalBTN = document.getElementById("metalBTN")
-const hardcoreBTN = document.getElementById("hardcoreBTN")
+const AlternativeBTN = document.getElementById("AlternativeBTN")
+const MetalBTN = document.getElementById("MetalBTN")
+const MetalcoreBTN = document.getElementById("MetalcoreBTN")
 
 const chromaticBTN = document.getElementById("chromaticBTN")
 const noiseBTN = document.getElementById("noiseBTN")
@@ -113,6 +115,23 @@ const CHANGETHISBUTGENRE = document.getElementById("CHANGETHISBUTGENRE")
 
 const dropdownRock = document.getElementById("dropdownRock")
 
+const AlternativeLearnBTN = document.getElementById("AlternativeLearnBTN")
+const MetalLearnBTN = document.getElementById("MetalLearnBTN")
+const MetalcoreLearnBTN = document.getElementById("MetalcoreLearnBTN")
+
+const AlternativeLearn = document.getElementById("AlternativeLearn")
+const MetalLearn = document.getElementById("MetalLearn")
+const MetalcoreLearn = document.getElementById("MetalcoreLearn")
+
+const ChromaticLearnBTN = document.getElementById("ChromaticLearnBTN")
+const NoiseLearnBTN = document.getElementById("NoiseLearnBTN")
+const TwoFiveLearnBTN = document.getElementById("TwoFiveLearnBTN")
+const ModalInterchangeLearnBTN = document.getElementById("ModalInterchangeLearnBTN")
+
+const ChromaticLearn = document.getElementById("ChromaticLearn")
+const NoiseLearn = document.getElementById("NoiseLearn")
+// const TwoFiveLearn = document.getElementById("TwoFiveLearn")
+const ModalInterchangeLearn = document.getElementById("ModalInterchangeLearn")
 
 
 
@@ -165,6 +184,8 @@ users = [
 
 
 activeuser = null
+activeusernum = ""
+userAdmin = false
 
 
 
@@ -233,6 +254,7 @@ loginForm.addEventListener("submit", (e) => {
                 newUserBTN.style.display = "none"
                 loginBTN.style.display = "none"
                 activeuser = attemptEmail
+                activeusernum = key
 
                 const modal = document.querySelector("#login-modal")
                 M.Modal.getInstance(modal).close();
@@ -245,6 +267,7 @@ loginForm.addEventListener("submit", (e) => {
                     adminSymbol.style.display = "block"
                     changeBTN.style.display = "none"
                     songBTN.style.display = "none"
+                    userAdmin = true
                 }
                 break
             } else {
@@ -385,6 +408,7 @@ signUpForm.addEventListener("submit", (e) => {
             loginBTN.style.display = "none"
 
             activeuser = newEmail
+            activeusernum = newUserNum
 
             const modal = document.querySelector("#signup-modal")
             M.Modal.getInstance(modal).close();
@@ -567,6 +591,69 @@ logoutBTN.addEventListener("click", (e) => {
     resetBTN.style.display = "none"
     changeBTN.style.display = "none"
     adminSymbol.style.display = "none"
+    AlternativeLearn.style.display = "none"
+
+    newUserBTN.style.display = "inline-block"
+    loginBTN.style.display = "inline-block"
+
+    activeuser = null
+    activeusernum = ""
+    userAdmin = false
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// <!-- delete account -->
+
+// description: logs the user out by hiding all the content and displaying only the
+// buttons for logging in/signing up
+// parameters: string, generalized function with e as argument
+// pre-conditions
+// post-conditions
+
+deleteAccountBTN.addEventListener("click", (e) => {
+
+
+
+    firebase.database().ref('accounts/' + activeusernum + '/').remove()
+    activeuser = null
+    activeusernum = ""
+    userAdmin = false
+
+
+    // sidenavTrigger.style.display = "none"
+    songBTN.style.display = "none"
+    cardDisplay.style.display = "none"
+    adminSugBTN.style.display = "none"
+    sugDisplay.style.display = "none"
+    createCardBTN.style.display = "none"
+    sidenavBTN.style.display = "none"
+    resetBTN.style.display = "none"
+    changeBTN.style.display = "none"
+    adminSymbol.style.display = "none"
+    AlternativeLearn.style.display = "none"
 
     newUserBTN.style.display = "inline-block"
     loginBTN.style.display = "inline-block"
@@ -643,6 +730,174 @@ logoutBTN.addEventListener("click", (e) => {
 
 
 
+// <!-- learn more btns -->
+
+// description: displays the 'learn more' area with more general information on a genre/concept
+// parameters: string, generalized function with e as argument
+// pre-conditions
+// post-conditions
+
+AlternativeLearnBTN.addEventListener("click", (e) => {
+
+
+    // sidenavTrigger.style.display = "none"
+    songBTN.style.display = "none"
+    cardDisplay.style.display = "none"
+    adminSugBTN.style.display = "none"
+    sugDisplay.style.display = "none"
+    createCardBTN.style.display = "none"
+    resetBTN.style.display = "none"
+    changeBTN.style.display = "none"
+
+    AlternativeLearn.style.display = "block"
+    MetalLearn.style.display = "none"
+    MetalcoreLearn.style.display = "none"
+    ChromaticLearn.style.display = "none"
+    NoiseLearn.style.display = "none"
+    ModalInterchangeLearn.style.display = "none"
+
+});
+
+
+
+
+
+MetalLearnBTN.addEventListener("click", (e) => {
+
+
+    // sidenavTrigger.style.display = "none"
+    songBTN.style.display = "none"
+    cardDisplay.style.display = "none"
+    adminSugBTN.style.display = "none"
+    sugDisplay.style.display = "none"
+    createCardBTN.style.display = "none"
+    resetBTN.style.display = "none"
+    changeBTN.style.display = "none"
+
+    AlternativeLearn.style.display = "none"
+    MetalLearn.style.display = "block"
+    MetalcoreLearn.style.display = "none"
+    ChromaticLearn.style.display = "none"
+    NoiseLearn.style.display = "none"
+    ModalInterchangeLearn.style.display = "none"
+
+});
+
+
+
+
+
+MetalcoreLearnBTN.addEventListener("click", (e) => {
+
+
+    // sidenavTrigger.style.display = "none"
+    songBTN.style.display = "none"
+    cardDisplay.style.display = "none"
+    adminSugBTN.style.display = "none"
+    sugDisplay.style.display = "none"
+    createCardBTN.style.display = "none"
+    resetBTN.style.display = "none"
+    changeBTN.style.display = "none"
+
+    AlternativeLearn.style.display = "none"
+    MetalLearn.style.display = "none"
+    MetalcoreLearn.style.display = "block"
+    ChromaticLearn.style.display = "none"
+    NoiseLearn.style.display = "none"
+    ModalInterchangeLearn.style.display = "none"
+
+});
+
+
+
+
+ChromaticLearnBTN.addEventListener("click", (e) => {
+
+
+    // sidenavTrigger.style.display = "none"
+    songBTN.style.display = "none"
+    cardDisplay.style.display = "none"
+    adminSugBTN.style.display = "none"
+    sugDisplay.style.display = "none"
+    createCardBTN.style.display = "none"
+    resetBTN.style.display = "none"
+    changeBTN.style.display = "none"
+
+    AlternativeLearn.style.display = "none"
+    MetalLearn.style.display = "none"
+    MetalcoreLearn.style.display = "none"
+    ChromaticLearn.style.display = "block"
+    NoiseLearn.style.display = "none"
+    ModalInterchangeLearn.style.display = "none"
+
+});
+
+
+
+
+NoiseLearnBTN.addEventListener("click", (e) => {
+
+
+    // sidenavTrigger.style.display = "none"
+    songBTN.style.display = "none"
+    cardDisplay.style.display = "none"
+    adminSugBTN.style.display = "none"
+    sugDisplay.style.display = "none"
+    createCardBTN.style.display = "none"
+    resetBTN.style.display = "none"
+    changeBTN.style.display = "none"
+
+    AlternativeLearn.style.display = "none"
+    MetalLearn.style.display = "none"
+    MetalcoreLearn.style.display = "none"
+    ChromaticLearn.style.display = "none"
+    NoiseLearn.style.display = "block"
+    ModalInterchangeLearn.style.display = "none"
+
+});
+
+
+
+
+ModalInterchangeLearnBTN.addEventListener("click", (e) => {
+
+
+    // sidenavTrigger.style.display = "none"
+    songBTN.style.display = "none"
+    cardDisplay.style.display = "none"
+    adminSugBTN.style.display = "none"
+    sugDisplay.style.display = "none"
+    createCardBTN.style.display = "none"
+    resetBTN.style.display = "none"
+    changeBTN.style.display = "none"
+
+    AlternativeLearn.style.display = "none"
+    MetalLearn.style.display = "none"
+    MetalcoreLearn.style.display = "none"
+    ChromaticLearn.style.display = "none"
+    NoiseLearn.style.display = "none"
+    ModalInterchangeLearn.style.display = "block"
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // list of IDs
 idList = []
 conceptsList = []
@@ -687,6 +942,7 @@ accNums = []
                                     </div>
                                     <div class="card-content">
                                         <span class="card-title">${band} - ${title}</span>
+                                        <a href="${link}">Video</a>
                                         <p>Concept: ${concepts}</p>
                                         <p>${description}</p>
                                     </div>
@@ -779,6 +1035,7 @@ sugNums = []
                                     </div>
                                     <div class="card-content">
                                         <span class="card-title">${band} - ${title}</span>
+                                        <a href="${link}">Video</a>
                                         <p>Concept: ${concepts}</p>
                                         <p>${description}</p>
                                     </div>
@@ -1030,15 +1287,15 @@ sugNums = []
 // the corresponding song cards when the appropriate button is clicked.
 // ie. if 'Alternative' is clicked, all 'alternative genre' songs are displayed.
 // Furthermore, the button also hides any cards from different genres/concepts.
-// Thus, if 'Alternative' is clicked, then 'Hardcore/Metalcore', the alternative songs
-// will be displayed first, then the hardcore songs will be displayed and the
+// Thus, if 'Alternative' is clicked, then 'Metalcore', the alternative songs
+// will be displayed first, then the metalcore songs will be displayed and the
 // alternative songs hidden.
 // parameters: string, generalized function
 // pre-conditions
 // post-conditions: page is not reloaded
 
 
-alternativeBTN.addEventListener("click", (e) => {
+AlternativeBTN.addEventListener("click", (e) => {
 
     e.preventDefault()
 
@@ -1051,6 +1308,27 @@ alternativeBTN.addEventListener("click", (e) => {
             document.getElementById(idList[i]).style.display = "none";
         }
     }
+
+
+    cardDisplay.style.display = "block"
+    changeBTN.style.display = "inline-block"
+
+    AlternativeLearn.style.display = "none"
+    MetalLearn.style.display = "none"
+    MetalcoreLearn.style.display = "none"
+    ChromaticLearn.style.display = "none"
+    NoiseLearn.style.display = "none"
+    ModalInterchangeLearn.style.display = "none"
+
+    if (userAdmin == true) {
+        adminSugBTN.style.display = "inline-block"
+        resetBTN.style.display = "inline-block"
+        createCardBTN.style.display = "inline-block"
+        
+        songBTN.style.display = "none"
+        changeBTN.style.display = "none"
+    }
+
     
     
     
@@ -1065,7 +1343,10 @@ alternativeBTN.addEventListener("click", (e) => {
 
 
 
-metalBTN.addEventListener("click", (e) => {
+
+
+
+MetalBTN.addEventListener("click", (e) => {
     e.preventDefault()
     for (i = 0; i < idList.length; i = i + 1) {
         if (idList[i].substring(0,5) == "Metal") {
@@ -1073,7 +1354,26 @@ metalBTN.addEventListener("click", (e) => {
         } else {
             document.getElementById(idList[i]).style.display = "none";
         }
-    } 
+    }
+
+    cardDisplay.style.display = "block"
+    changeBTN.style.display = "inline-block"
+
+    AlternativeLearn.style.display = "none"
+    MetalLearn.style.display = "none"
+    MetalcoreLearn.style.display = "none"
+    ChromaticLearn.style.display = "none"
+    NoiseLearn.style.display = "none"
+    ModalInterchangeLearn.style.display = "none"
+
+    if (userAdmin == true) {
+        adminSugBTN.style.display = "inline-block"
+        resetBTN.style.display = "inline-block"
+        createCardBTN.style.display = "inline-block"
+        
+        songBTN.style.display = "none"
+        changeBTN.style.display = "none"
+    }
 });
 
 
@@ -1085,20 +1385,38 @@ metalBTN.addEventListener("click", (e) => {
 
 
 
-hardcoreBTN.addEventListener("click", (e) => {
+MetalcoreBTN.addEventListener("click", (e) => {
 
     e.preventDefault()
 
     for (i = 0; i < idList.length; i = i + 1) {
 
-        if (idList[i].substring(0,18) == "Hardcore/Metalcore") {
+        if (idList[i].substring(0,9) == "Metalcore") {
 
             document.getElementById(idList[i]).style.display = "block";
         } else {
             document.getElementById(idList[i]).style.display = "none";
         }
     }
-    
+
+    cardDisplay.style.display = "block"
+    changeBTN.style.display = "inline-block"
+
+    AlternativeLearn.style.display = "none"
+    MetalLearn.style.display = "none"
+    MetalcoreLearn.style.display = "none"
+    ChromaticLearn.style.display = "none"
+    NoiseLearn.style.display = "none"
+    ModalInterchangeLearn.style.display = "none"
+
+    if (userAdmin == true) {
+        adminSugBTN.style.display = "inline-block"
+        resetBTN.style.display = "inline-block"
+        createCardBTN.style.display = "inline-block"
+        
+        songBTN.style.display = "none"
+        changeBTN.style.display = "none"
+    }
     
     
 });
@@ -1126,8 +1444,25 @@ chromaticBTN.addEventListener("click", (e) => {
         }
     }
     
-    
-    
+    cardDisplay.style.display = "block"
+    changeBTN.style.display = "inline-block"
+
+    AlternativeLearn.style.display = "none"
+    MetalLearn.style.display = "none"
+    MetalcoreLearn.style.display = "none"
+    ChromaticLearn.style.display = "none"
+    NoiseLearn.style.display = "none"
+    ModalInterchangeLearn.style.display = "none"
+
+    if (userAdmin == true) {
+        adminSugBTN.style.display = "inline-block"
+        resetBTN.style.display = "inline-block"
+        createCardBTN.style.display = "inline-block"
+        
+        songBTN.style.display = "none"
+        changeBTN.style.display = "none"
+    }
+ 
 });
 
 
@@ -1154,8 +1489,24 @@ noiseBTN.addEventListener("click", (e) => {
         }
     }
 
-    
-    
+    cardDisplay.style.display = "block"
+    changeBTN.style.display = "inline-block"
+
+    AlternativeLearn.style.display = "none"
+    MetalLearn.style.display = "none"
+    MetalcoreLearn.style.display = "none"
+    ChromaticLearn.style.display = "none"
+    NoiseLearn.style.display = "none"
+    ModalInterchangeLearn.style.display = "none"
+
+    if (userAdmin == true) {
+        adminSugBTN.style.display = "inline-block"
+        resetBTN.style.display = "inline-block"
+        createCardBTN.style.display = "inline-block"
+        
+        songBTN.style.display = "none"
+        changeBTN.style.display = "none"
+    }
 });
 
 
@@ -1180,8 +1531,24 @@ twoFiveBTN.addEventListener("click", (e) => {
             document.getElementById(idList[i]).style.display = "none";
         }
     }
-    
-    
+    cardDisplay.style.display = "block"
+    changeBTN.style.display = "inline-block"
+
+    AlternativeLearn.style.display = "none"
+    MetalLearn.style.display = "none"
+    MetalcoreLearn.style.display = "none"
+    ChromaticLearn.style.display = "none"
+    NoiseLearn.style.display = "none"
+    ModalInterchangeLearn.style.display = "none"
+
+    if (userAdmin == true) {
+        adminSugBTN.style.display = "inline-block"
+        resetBTN.style.display = "inline-block"
+        createCardBTN.style.display = "inline-block"
+        
+        songBTN.style.display = "none"
+        changeBTN.style.display = "none"
+    }
     
 });
 
@@ -1208,8 +1575,24 @@ modalInterchangeBTN.addEventListener("click", (e) => {
             document.getElementById(idList[i]).style.display = "none";
         }
     }
-    
-    
+    cardDisplay.style.display = "block"
+    changeBTN.style.display = "inline-block"
+
+    AlternativeLearn.style.display = "none"
+    MetalLearn.style.display = "none"
+    MetalcoreLearn.style.display = "none"
+    ChromaticLearn.style.display = "none"
+    NoiseLearn.style.display = "none"
+    ModalInterchangeLearn.style.display = "none"
+
+    if (userAdmin == true) {
+        adminSugBTN.style.display = "inline-block"
+        resetBTN.style.display = "inline-block"
+        createCardBTN.style.display = "inline-block"
+        
+        songBTN.style.display = "none"
+        changeBTN.style.display = "none"
+    }
     
 });
 
@@ -1236,8 +1619,24 @@ fiveFourTimeBTN.addEventListener("click", (e) => {
         }
     }
     
-    
-    
+    cardDisplay.style.display = "block"
+    changeBTN.style.display = "inline-block"
+
+    AlternativeLearn.style.display = "none"
+    MetalLearn.style.display = "none"
+    MetalcoreLearn.style.display = "none"
+    ChromaticLearn.style.display = "none"
+    NoiseLearn.style.display = "none"
+    ModalInterchangeLearn.style.display = "none"
+
+    if (userAdmin == true) {
+        adminSugBTN.style.display = "inline-block"
+        resetBTN.style.display = "inline-block"
+        createCardBTN.style.display = "inline-block"
+        
+        songBTN.style.display = "none"
+        changeBTN.style.display = "none"
+    }
 });
 
 
@@ -1272,7 +1671,7 @@ fiveFourTimeBTN.addEventListener("click", (e) => {
 // pre-conditions
 // post-conditions: page is not reloaded
 
-genreList = ["Alternative", "Metal", "Hardcore/Metalcore"]
+genreList = ["Alternative", "Metal", "Metalcore"]
 
 songForm.addEventListener("submit", (e) => {
 
@@ -1571,22 +1970,53 @@ createCardForm.addEventListener("submit", (e) => {
 
 
 
+// genreID = []
+
+//     // for (i = 0; i < idList.length; i = i + 1) {
+
+//     //     if (idList[i].substring(0,11) == "Alternative") {
+
+//     //         document.getElementById(idList[i]).style.display = "block";
+//     //     } else {
+//     //         document.getElementById(idList[i]).style.display = "none";
+//     //     }
+//     // }
+
+//     document.addEventListener('DOMContentLoaded', function() {
+//         genreListPull.on('value', (snapshot) => {
+//             genreListFB = snapshot.val();
+//             console.log(genreListFB)
+//             console.log(genreID)
+    
+//             genDropDown();
+
+//             for (i = 0; i < genreID.length; i = i + 1) {
+                
+//                 var t = document.getElementById(genreID[i] + "BTN")
+        
+        
+        
+//                 t.addEventListener("click", (e) => {
+//                     e.preventDefault()
+        
+//                     for (i = 0; i < idList.length; i = i + 1) {
+
+//                         if (idList[i].substring(0,11) == "Alternative") {
+                
+//                             document.getElementById(idList[i]).style.display = "block";
+//                         } else {
+//                             document.getElementById(idList[i]).style.display = "none";
+//                         }
+//                     }
+                  
+             
+//                 });
+//             }
+//         })
+//     });
 
 
-// var genreListPull = firebase.database().ref('genres/');
-
-
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     genreListPull.on('value', (snapshot) => {
-//         genreListFB = snapshot.val();
-//         console.log(genreListFB)
-
-//         genDropDown();
-
-//     })
-// });
+//     var genreListPull = firebase.database().ref('genres/');
   
 
 //     function genDropDown() {
@@ -1596,13 +2026,13 @@ createCardForm.addEventListener("submit", (e) => {
 
 //         for (key in genreListFB) {
 
-//             var newli = document.createElement("li");
-//             var newa = document.createElement("a")
-//             newa.innerHTML = key;
-//             newli.appendChild(newa);
-//             CHANGETHISBUTGENRE.appendChild(newli);
-//             dropdownRock.appendChild(newli);
-//             console.log(key)
+//             // var newli = document.createElement("li");
+//             // var newa = document.createElement("a")
+//             // newa.innerHTML = key;
+//             // newli.appendChild(newa);
+//             // // CHANGETHISBUTGENRE.appendChild(newli);
+//             // dropdownRock.appendChild(newli);
+//             // console.log(key)
 
 
 //             for (key2 in genreListFB[key]) {
@@ -1611,11 +2041,14 @@ createCardForm.addEventListener("submit", (e) => {
 //                 var newa = document.createElement("a")
 //                 newa.innerHTML = genreListFB[key][key2];
 //                 newli.appendChild(newa);
-//                 CHANGETHISBUTGENRE.appendChild(newli);
+//                 newli.id = key2 + "BTN";
+//                 newGenreID = key2 + "BTN"
 //                 dropdownRock.appendChild(newli);
-//                 console.log(key2)
+//                 console.log(newGenreID)
+
+//                 genreID.append[newGenreID]
+//                 console.log(genreID)
 
 //             }
 //         }
-
 //     }
