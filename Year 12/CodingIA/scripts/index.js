@@ -151,6 +151,9 @@ const ModalInterchangeLearn = document.getElementById("ModalInterchangeLearn")
 
 
 
+
+
+
 // <!-- script that contains sample user info -->
 // possible extension by using either firebase database or firebase authentication
 
@@ -576,7 +579,7 @@ resetForm.addEventListener("submit", (e) => {
 // buttons for logging in/signing up
 // parameters: string, generalized function with e as argument
 // pre-conditions
-// post-conditions
+// post-conditions: page is reloaded
 
 logoutBTN.addEventListener("click", (e) => {
 
@@ -599,6 +602,8 @@ logoutBTN.addEventListener("click", (e) => {
     activeuser = null
     activeusernum = ""
     userAdmin = false
+
+    location.reload()
 
 
 
@@ -631,7 +636,7 @@ logoutBTN.addEventListener("click", (e) => {
 // buttons for logging in/signing up
 // parameters: string, generalized function with e as argument
 // pre-conditions
-// post-conditions
+// post-conditions: page is reloaded
 
 deleteAccountBTN.addEventListener("click", (e) => {
 
@@ -657,6 +662,8 @@ deleteAccountBTN.addEventListener("click", (e) => {
 
     newUserBTN.style.display = "inline-block"
     loginBTN.style.display = "inline-block"
+
+    location.reload()
 
 
 
@@ -735,7 +742,7 @@ deleteAccountBTN.addEventListener("click", (e) => {
 // description: displays the 'learn more' area with more general information on a genre/concept
 // parameters: string, generalized function with e as argument
 // pre-conditions
-// post-conditions
+// post-conditions: page is not reloaded
 
 AlternativeLearnBTN.addEventListener("click", (e) => {
 
@@ -924,7 +931,7 @@ accNums = []
 // pre-conditions: inputs must be strings
 // post-conditions
 
- 	function createCard(title, band, genre, description, link, concepts) {
+ 	function createCard(title, band, genre, description, link, concepts, watchLink) {
         const card = `
 
                 <div id = "${genre}CardFor${title}" class = "container" style="display: none; margin-bottom: 50px">
@@ -942,7 +949,7 @@ accNums = []
                                     </div>
                                     <div class="card-content">
                                         <span class="card-title">${band} - ${title}</span>
-                                        <a href="${link}">Video</a>
+                                        <a href="${watchLink}" target="_blank">Video</a>
                                         <p>Concept: ${concepts}</p>
                                         <p>${description}</p>
                                     </div>
@@ -1018,7 +1025,7 @@ sugNums = []
 // pre-conditions: inputs must be strings
 // post-conditions
 
- 	function createSugCard(title, band, genre, description, link, concepts, number) {
+ 	function createSugCard(title, band, genre, description, link, concepts, number, watchLink) {
         const card = `
 
                 <div class="container">
@@ -1035,7 +1042,7 @@ sugNums = []
                                     </div>
                                     <div class="card-content">
                                         <span class="card-title">${band} - ${title}</span>
-                                        <a href="${link}">Video</a>
+                                        <a href="${watchLink}" target="_blank">Video</a>
                                         <p>Concept: ${concepts}</p>
                                         <p>${description}</p>
                                     </div>
@@ -1144,9 +1151,11 @@ sugNums = []
             // console.log("**&")
             if (data[key]["approved"] == true) {
 
+                watchableLink = data[key]["link"].replace("embed","watch")
+
                 //console.log(data)
                 newDivFB = document.createElement("div")
-                newDivFB.innerHTML = createCard(data[key]["title"],data[key]["band"],data[key]["genre"],data[key]["description"],data[key]["link"],data[key]["concepts"])
+                newDivFB.innerHTML = createCard(data[key]["title"],data[key]["band"],data[key]["genre"],data[key]["description"],data[key]["link"],data[key]["concepts"],watchableLink)
 
                 cardDisplay.appendChild(newDivFB)
                 accNums.push(key.toString())
@@ -1161,8 +1170,10 @@ sugNums = []
 
             if (data[key]["approved"] == false) {
 
+                watchableSugLink = data[key]["link"].replace("embed","watch")
+
                 newDivSugFB = document.createElement("div")
-                newDivSugFB.innerHTML = createSugCard(data[key]["title"],data[key]["band"],data[key]["genre"],data[key]["description"],data[key]["link"],data[key]["concepts"],key.toString())
+                newDivSugFB.innerHTML = createSugCard(data[key]["title"],data[key]["band"],data[key]["genre"],data[key]["description"],data[key]["link"],data[key]["concepts"],key.toString(),watchableSugLink)
 
                 sugDisplay.appendChild(newDivSugFB)
                 sugNums.push(key.toString())
@@ -1764,7 +1775,7 @@ songForm.addEventListener("submit", (e) => {
 // description: displays the suggestion cards for the admin
 // parameters: string, generalized function
 // pre-conditions
-// post-conditions
+// post-conditions: page is not reloaded
 
 adminSugBTN.addEventListener("click", (e) => {
 
@@ -1889,13 +1900,12 @@ createCardForm.addEventListener("submit", (e) => {
 
 // <!-- creation of genre dropdowns -->
 
-// description: fffff
-// parameters: string, generalized function with e as argument
-// parameter is string, argument is 'submit'
-// pre-conditions
-// post-conditions: the page cannot reload (e.preventDefault)
-
 // var genreListPull = firebase.database().ref('genres/');
+
+// description: pulls genre data from Firebase in order to create a dropdown in 'dropdownRock'
+// parameters: string, generalized function with snapshot as argument
+// pre-conditions: firebase data is pulled on any change and when the page loads
+// post-conditions: firebase data is not changed
 
 // genreListPull.on('value', (snapshot) => {
 //     genreListFB = snapshot.val();
@@ -2018,6 +2028,11 @@ createCardForm.addEventListener("submit", (e) => {
 
 //     var genreListPull = firebase.database().ref('genres/');
   
+
+// description: creates a dropdown in 'dropdownRock' with the data pulled from firebase
+// parameters: none
+// pre-conditions
+// post-conditions:
 
 //     function genDropDown() {
 //         console.log("TEST")

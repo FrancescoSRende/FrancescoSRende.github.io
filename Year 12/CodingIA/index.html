@@ -117,7 +117,7 @@
 
 
 
-
+    
 
     <!-- Sidenav -->
 
@@ -134,9 +134,9 @@
                     <li>
                         <li><a class="dropdown-trigger" href="#!" data-target="dropdownRock">Rock<i class="material-icons right">arrow_drop_down</i></a></li>
                         <ul id='dropdownRock' class='dropdown-content'>
-                            <li id = "AlternativeBTN"><a href="#!">Alternative</a></li>
-                            <li id = "MetalBTN"><a href="#!">Metal</a></li>
-                            <li id = "MetalcoreBTN"><a href="#!">Metalcore</a></li>
+                            <li id = "AlternativeBTN"><a onclick="M.toast({html: 'Click back to website'})" href="#!">Alternative</a></li>
+                            <li id = "MetalBTN"><a onclick="M.toast({html: 'Click back to website'})" href="#!">Metal</a></li>
+                            <li id = "MetalcoreBTN"><a onclick="M.toast({html: 'Click back to website'})" href="#!">Metalcore</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -148,15 +148,15 @@
                     <li>
                         <li><a class="dropdown-trigger" href="#!" data-target="dropdownHarmony">Harmony<i class="material-icons right">arrow_drop_down</i></a></li>
                         <ul id='dropdownHarmony' class='dropdown-content'>
-                            <li id = "chromaticBTN"><a href="#!">Chromaticism</a></li>
-                            <li id = "noiseBTN"><a href="#!">Noise</a></li>
-                            <li id = "twoFiveBTN"><a href="#!">Two-Five Progression</a></li>
-                            <li id = "modalInterchangeBTN"><a href="#!">Modal Interchange</a></li>
+                            <li id = "chromaticBTN"><a onclick="M.toast({html: 'Click back to website'})" href="#!">Chromaticism</a></li>
+                            <li id = "noiseBTN"><a onclick="M.toast({html: 'Click back to website'})" href="#!">Noise</a></li>
+                            <li id = "twoFiveBTN"><a onclick="M.toast({html: 'Click back to website'})" href="#!">Two-Five Progression</a></li>
+                            <li id = "modalInterchangeBTN"><a onclick="M.toast({html: 'Click back to website'})" href="#!">Modal Interchange</a></li>
                         </ul>
 
                         <li><a class="dropdown-trigger" href="#!" data-target="dropdownRhythm">Rhythm<i class="material-icons right">arrow_drop_down</i></a></li>
                         <ul id='dropdownRhythm' class='dropdown-content'>
-                            <li id = "fiveFourTimeBTN"><a href="#!">5/4 Time Signature</a></li>
+                            <li id = "fiveFourTimeBTN"><a onclick="M.toast({html: 'Click back to website'})" href="#!">5/4 Time Signature</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -186,9 +186,9 @@
                     <li>
                         <li><a class="dropdown-trigger" href="#!" data-target="dropdownRockLearn">Rock<i class="material-icons right">arrow_drop_down</i></a></li>
                         <ul id='dropdownRockLearn' class='dropdown-content'>
-                            <li id = "AlternativeLearnBTN"><a href="#!">Alternative</a></li>
-                            <li id = "MetalLearnBTN"><a href="#!">Metal</a></li>
-                            <li id = "MetalcoreLearnBTN"><a href="#!">Metalcore</a></li>
+                            <li id = "AlternativeLearnBTN"><a onclick="M.toast({html: 'Click back to website'})" href="#!">Alternative</a></li>
+                            <li id = "MetalLearnBTN"><a onclick="M.toast({html: 'Click back to website'})" href="#!">Metal</a></li>
+                            <li id = "MetalcoreLearnBTN"><a onclick="M.toast({html: 'Click back to website'})" href="#!">Metalcore</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -201,10 +201,10 @@
                     <li>
                         <li><a class="dropdown-trigger" href="#!" data-target="dropdownHarmonyLearn">Harmony<i class="material-icons right">arrow_drop_down</i></a></li>
                         <ul id='dropdownHarmonyLearn' class='dropdown-content'>
-                            <li id = "ChromaticLearnBTN"><a href="#!">Chromaticism</a></li>
-                            <li id = "NoiseLearnBTN"><a href="#!">Noise</a></li>
+                            <li id = "ChromaticLearnBTN"><a onclick="M.toast({html: 'Click back to website'})" href="#!">Chromaticism</a></li>
+                            <li id = "NoiseLearnBTN"><a onclick="M.toast({html: 'Click back to website'})" href="#!">Noise</a></li>
                             <!-- <li id = "TwoFiveLearnBTN"><a href="#!">Two-Five Progression</a></li> -->
-                            <li id = "ModalInterchangeLearnBTN"><a href="#!">Modal Interchange</a></li>
+                            <li id = "ModalInterchangeLearnBTN"><a onclick="M.toast({html: 'Click back to website'})" href="#!">Modal Interchange</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -212,8 +212,10 @@
         </div>
 
     </ul>
-    
-    <a href="#" id="sidenavBTN" data-target="slide-out" style="display: none" class="sidenav-trigger"><i class="medium material-icons">search</i></a>
+    <div id="sidenavBTN" style="display: none">
+        <a href="#" data-target="slide-out" class="sidenav-trigger" style="color: #379be5"><i class="medium material-icons">search</i></a>
+        <p style="padding-left: 10px" style="color: #379be5">Browse Songs and Learn More</p>
+    </div>
 
 
 
