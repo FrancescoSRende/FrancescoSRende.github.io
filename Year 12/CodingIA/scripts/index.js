@@ -18,6 +18,16 @@ document.addEventListener('DOMContentLoaded', function() {
     var instancesSelect = M.FormSelect.init(elemsSelect, optionsSelect);
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    optionsCollapse = {}
+    var elemsCollapse = document.querySelectorAll('.collapsible');
+    var instancesCollapse = M.Collapsible.init(elemsCollapse, optionsCollapse);
+});
+
+
+
+
+// THE FAKE GMAIL ACCOUNT: EMAIL IS 'farmcoder18@gmail.com', PASSWORD IS YOUR UCC GMAIL PASSWORD
 
 
 
@@ -934,31 +944,39 @@ accNums = []
  	function createCard(title, band, genre, description, link, concepts, watchLink) {
         const card = `
 
-                <div id = "${genre}CardFor${title}" class = "container" style="display: none; margin-bottom: 50px">
+                    <div id = "${genre}CardFor${title}" class = "container" style="display: none; margin-bottom: 50px">
                         <h2 class = "center-align">${genre}</h2>
+                        <div class="card hoverable" style = "height: 600px">
 
-                                <div class="card hoverable" style = "height: 520px">
-
-                                    <div class="card-image">
-                                        <div class="video-container">
-                                            <iframe width="560" height="315" src="${link}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                        </div>
-                                        <!-- <a href="#" class="halfway-fab btn-floating pink pulse">
-                                            <i class="material-icons">favorite</i>
-                                        </a> -->
-                                    </div>
-                                    <div class="card-content">
-                                        <span class="card-title">${band} - ${title}</span>
-                                        <a href="${watchLink}" target="_blank">Video</a>
-                                        <p>Concept: ${concepts}</p>
-                                        <p>${description}</p>
-                                    </div>
-                                    <div class="card-action">
-                                        <a href="https://en.wikipedia.org/wiki/Lamb_of_God_(band)">More Details</a>
-                                        <a href="https://www.youtube.com/watch?v=HL9kaJZw8iw&ab_channel=lambofgodVEVO">Laid to Rest</a>
-                                    </div>
+                            <div class="card-image">
+                                <div class="video-container">
+                                    <iframe width="560" height="315" src="${link}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
+                                      
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title">${band} - ${title}</span>
+                                <a href="${watchLink}" target="_blank">Video</a>
+                                <p>Concept: ${concepts}</p>
+                                <p>${description}</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="https://www.youtube.com/watch?v=eJTYAfc8s_Y" target="_blank">Learn More About ${concepts}</a>
+                            </div>
 
+                            <div class="card-action">
+                                <ul class="collapsible">
+                                    <li>
+                                        <div class="collapsible-header"><i class="material-icons">filter_drama</i>READ MORE</div>
+                                        <div class="collapsible-body"><p>INFOINFOINFO</p></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="card-action">
+                                <a href="https://www.youtube.com/watch?v=HL9kaJZw8iw&ab_channel=lambofgodVEVO">Laid to Rest</a>
+                            </div>
+                        </div>
                     </div>
             `;
 
@@ -969,6 +987,13 @@ accNums = []
 
     }
 
+
+    // <ul class="collapsible">
+    //                                     <li>
+    //                                         <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+    //                                         <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    //                                     </li>
+    //                                 </ul>
    
    //creates an extra div in the structure
    //Suggestion: Remove the div for the col in the 
@@ -988,6 +1013,19 @@ accNums = []
     //     }
     // }
     
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1187,6 +1225,25 @@ sugNums = []
 // so that the suggested cards can be approved or rejected
 
         for (i = 0; i < sugNums.length; i = i + 1) {
+
+
+
+            // var coll = document.getElementsByClassName("collapsible");
+            // var q;
+
+            // for (q = 0; q < coll.length; q++) {
+            //     coll[i].addEventListener("click", function() {
+            //         this.classList.toggle("active");
+            //         var content = this.nextElementSibling;
+            //         if (content.style.display === "block") {
+            //             content.style.display = "none";
+            //         } else {
+            //             content.style.display = "block";
+            //         }
+            //     });
+            // }
+
+
             
             indS = sugNums[i]
             indI = parseInt(indS)
@@ -1360,7 +1417,8 @@ AlternativeBTN.addEventListener("click", (e) => {
 MetalBTN.addEventListener("click", (e) => {
     e.preventDefault()
     for (i = 0; i < idList.length; i = i + 1) {
-        if (idList[i].substring(0,5) == "Metal") {
+        if (idList[i].substring(0,9) == "MetalCard") {
+            console.log(idList[i])
             document.getElementById(idList[i]).style.display = "block";
         } else {
             document.getElementById(idList[i]).style.display = "none";
